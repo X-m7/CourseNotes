@@ -57,5 +57,24 @@
         \textbf{Multicore thread scheduling issues}: prioritize reducing access to off chip memory instead of maximizing processor utilization, use caches, which are sometimes shared by some but not all cores\\
         \textbf{Cache Sharing}: part of above, cooperative resource sharing (multiple threads access same memory locations), resource contention (multiple threads competing for cache use)\\
         \textbf{Contention Aware Scheduling}: allocate threads to cores to maximize shared cache \& minimize need for off chip memory access\\
+        \underline{\textbf{Real Time System  (RTS) Types}}: hard (must meet deadline always, unacceptable damage otherwise, ex: airbag, fly-by-wire, ABS), soft (must mostly meet deadlines, desirable but not mandatory, still makes sense to schedule and complete task even if deadline has passed, ex: multimedia, navigation, washing over time)\\
+        \textbf{RTS Properties}: arrival/release time, maximum execution (service) time, deadline (starting or completion)\\
+        \textbf{RTS Task Categories}: periodic (regular interval, max execution time is the same each period, arrival time is start of period, deadline is the end of period), aperiodic (arrive any time)\\
+        \textbf{RTS Characteristics}:
+        \textit{determinism}: delay before acknowledging interrupt, operations performed at fixed, predetermined times or within predetermined time intervals;
+        \textit{responsiveness}: time taken to service interrupt after acknowledgement, includes time to initially handle interrupt and begin executing service routine, time required to perform routine and interrupt nesting;
+        \textit{user control}: much broader in real time than standard;
+        \textit{reliability}: more important than normal;
+        \textit{fail safe operation};
+        \textit{stability}: system will meet deadlines of most critical, highest priority tasks even if some less critical task deadlines are not always met\\
+        \textbf{Static Table Driven}: precomputed schedule for periodic tasks\\
+        \textbf{Static Priority Driven}: precomputed priorities, use preemptive priority scheduler, also for periodic\\
+        \textbf{Dynamic Planning Based}: task arrives prior to execution, scheduler determines whether new task can be admitted, works for both periodic \& aperiodic\\
+        \textbf{Dynamic Best Effort}: priority assigned on task arrival based on characteristics, tries to meet all deadlines, abort processes which have missed the deadline, no guarantee of timing constraint of task until complete, typically aperiodic, used by many current systems\\
+        \textbf{Preemption only for ending deadlines, NOT starting}\\
+        \textbf{Periodic Load}: given $n$ events, event occurs in period $T$ and requires $C$ time, $U = \frac{C}{T}$, $\sum U \leq 1$ to be possible to schedule, timeline repeat when all task deadlines align\\
+        \textbf{Rate Monotonic Scheduling}: static priority driven, shorter period higher priority, $\sum U \leq n(2^{\frac{1}{n}}-1)$ (conservative), performance difference is small relative to earliest deadline first, most hard real time systems also have soft parts which are not used with rate monotonic scheduling, also stability is easier\\
+        \textbf{Priority Inversion}: circumstances within the system force a higher priority task to wait for a lower priority task\\
+        \textbf{Unbounded Priority Inversion}: duration depends on unpredictable actions of other unrelated tasks as well as the time to handle the shared resource, ex: T1 needs to wait for T3, but T2 is higher priority than T3, so it runs, so T3 cannot proceed, so T1 cannot proceed as well, to solve increase priority of T3 to above T1, so it runs before T2 (implementation: resource priority is highest priority user + 1, then that priority  is assigned to processes that use the resource, after that the process priority returns to normal)\\
     \end{multicols}
     \end{document}
