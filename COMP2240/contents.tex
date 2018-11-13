@@ -193,5 +193,12 @@
             5 & == L0 read, $<$ write & == L0 read, general $<$ write\\
             6 & == L0 read, $<$ L5 write & == L0 read, sig $<$ L5 write\\
         \end{tabular}
+        \underline{\textbf{File Management (FM)}}: consists of system utils that run as privileged apps, at least needs special services from OS, at most part of OS\\
+        \textbf{File Properties}: long term existence, shareable between processes, structure (internal \& external)\\
+        \textbf{File System (FS)}: means to store data organized as files as well as ops (create, delete, open, close, read, write)\\
+        \textbf{File Structure Terms}: Field (basic element of data, single value, fixed/variable length), Record (collection of related fields, can be treated as unit, fixed/variable length), file (collection of similar records, treated as single entity, may be referenced by name, access control apply here), Database (collecion of related data, relationships explicit, consists of one or more files)\\
+        \textbf{FM Objectives}: meet data management needs of user, guarantee valid data in file, optimize performance, provide support for variety of storage device types, minimize potential for lost or destroyed data, provide standardized interface to process, provide multi-user support\\
+        \textbf{FM User Requirements}: create, delete, read, modify, write files; have controlled access to other users' files; control what type of access allowed to files; restructure files in form appropriate to problem; move data between files; backup \& recover files in case of damage; access by name rather than by identifier\\
+        \textbf{FS Architecture}: Access Method (file structure, access, process data), Logical I/O (files), Basic I/O Supervisor (scheduling), Basic FS (placement \& buffering of blocks), Device Driver (start \& end of request)\\
     \end{multicols}
     \end{document}
