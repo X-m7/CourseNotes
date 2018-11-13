@@ -214,7 +214,7 @@
         3.\ if L full split around median key into 2 new nodes with d-1 keys in each \& promote median key to next higher level, place new key in appropriate left/right node, original node is now split\\
         4.\ insert promoted node to parent node according to 3\\
         5.\ apply promotion if needed until root reached, if root full split using 3\\
-        \textbf{Ops on Directory}: search, create files, delete files, list dir, update dir
+        \textbf{Ops on Directory}: search, create files, delete files, list dir, update dir\\
         \textbf{Directory Structures}: 2 level (master, user dirs below), tree structured (2 level but user dir is tree root too, can use seq file or hashed), acyclic-graph (same file may be in diff dirs, can impl with link)\\
         \textbf{File Sharing Issues}: access rights (none, knowledge, exec, read, append, update, change protection, del, users can be owner, specific users, user groups, all), simultaneous access\\
         \textbf{Record Blocking}: typically fixed length, larger reduce transfer time if seq access but need larger buffer, if random then unused records follow too\\
