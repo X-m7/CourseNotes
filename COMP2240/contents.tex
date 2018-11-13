@@ -4,7 +4,7 @@
 
     \begin{document}
     \begin{multicols}{2}
-        \scriptsize
+        \tiny
         \noindent\underline{\textbf{Process}}: unit of activity characterized by execution of sequence of instructions, current state \& associated set of system resources, consists of program code \& associated data at least\\
         \textbf{Trace}: behavior of individual process by listing sequence of instructions\\
         \textbf{Dispatcher}: switches processor from one process to another\\
@@ -176,5 +176,22 @@
         \textbf{I/O Buffering}: smooth out peaks in I/O demand (eventually all buffers full and no more advantage), transfer input in advance of request, transfer output sometime after, no buffer then time per block is T (input time) + C (compute time), 1 buffer then max (T,C) + M (move from buffer to user memory), 2 then max (T,C) only (OS fill one, user take from other, or other way), or circular\\
         \textbf{Block Oriented Single Buffer}: anticipated input, when transfer complete block moved to user space and request another immediately, generally speedup but complicates OS logic \& swapping logic\\
         \textbf{Stream Oriented Single Buffer}: line at a time or byte at a time (each keystroke, or for sensors, controllers)\\
+        \underline{\textbf{Disk Performance Parameters}}: seek time (move head, dominant), rotational delay, access time (previous 2)\\
+        \textbf{FIFO}: fair to all, approximates random if there are many processes competing (bad)\\
+        \textbf{Shortest Service Time First}: least movement away from current position\\
+        \textbf{SCAN/LOOK}: elevator, arm moves in one direction, SCAN satisfies all requests until last track then reverse, LOOK reverses after no more requests in direction, favours jobs near innermost or outermost\\
+        \textbf{N-step-SCAN}: avoid starvation by arm stickiness, segments the disk request queue to sub queues of length N, each sub queue processed using SCAN, when sub queue processed new must go to other, if fewer than N available all processed, large N approaches SCAN, N=1 FIFO\\
+        \textbf{Priority}: imposed outside of disk management to meet other objectives in OS, not for optimising disk use, ex: interactive (and maybe short batch) jobs given higher priority, good response time but long jobs slow\\
+        \textbf{Redundant Array of Independent Disks}: Availablility: (A0: lower than single, A1: higher than single, A2: higher than A1, A3: max), 0 (A0), 1 (A2), 2 (Hamming code, N+m, A1), 3 (Bit-interleaved parity, N+1, A1), 4 (Block-interleaved parity, N+1, A1), 5 (Block-interleaved distributed parity, N+1, A1), 6 (Block-interleaved dual distributed parity, N+2, A3), table below compare to single disk by default\\
+        \begin{tabular}{l l l}
+            n & large transfer & small request\\
+            0 & very high & very high\\
+            1 & $>$ read, == write & up to 2x read, == write\\
+            2 & highest of all & 2x approx\\
+            3 & highest of all & 2x approx\\
+            4 & == L0, sig $<$ write & == L0, sig $<$ write\\
+            5 & == L0 read, $<$ write & == L0 read, general $<$ write\\
+            6 & == L0 read, $<$ L5 write & == L0 read, sig $<$ L5 write\\
+        \end{tabular}
     \end{multicols}
     \end{document}
