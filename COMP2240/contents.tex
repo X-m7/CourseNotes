@@ -161,5 +161,20 @@
         \textbf{Variable-Local}: when load process allocate number of frames, when page fault occurs replace a page in process resident set, reevaluate allocation and increase/decrease to improve performance, more complex but better performance\\
         \textbf{Cleaning Policy}: determine when modified page should be written out, demand cleaning (write out only when selected for replacement), precleaning (allows writing of pages in batches)\\
         \textbf{Load Control}: number of processes resident in main memory (multiprogramming level), too few then need to swap to get ready process, too many then thrashing, to reduce level need to choose process to swap out (lowest priority, faulting, last process activated, smallest resident set, largest process, largest remaining execution window)\\
+        \underline{\textbf{I/O Device Categories}}: human readable, machine readable, communication (modem)\\
+        \textbf{Differences in I/O Devices}: data rate, application/use, complexity of control, unit of transfer (block vs stream), data representation (encoding), error conditions\\
+        \textbf{OS Design Objectives for I/O}: Efficiency (I/O often bottleneck, most attention for disk), Generality (way processes view I/O devices \& OS manages devices \& ops, diversity makes it hard, so use hierarchy)\\
+        \textbf{Hierarchical Design}: functions of OS should be separated according to complexity, characteristic time scale, level of abstraction, leads to series of layers in OS organization, layers should be defined so changes on one layer do not require changes to other layers\\
+        \textbf{Local Peripheral Device}: logical I/O (managing general functions, use device in terms of id, open, close, read, write), device I/O (convert ops and data to sequences of I/O instructions, channel commands, controller orders, may use buffering), scheduling and control (queue \& schedule of I/O ops, control of ops, interrupt handling, status collected and reported, direct interaction with hardware)\\
+        \textbf{Communication Port}: difference with above is communications arch instead of logical I/O, may itself consist of layers, ex: TCP/IP\\
+        \textbf{File Structure}: diff with above is 3 layers instead of comms arch, which are:\\
+        \textbf{Directory Management}: symbolic file names converted to identifiers that either reference the file directly or indirectly through file descriptor or index table, also concerned with user ops that affect directory of files, ex: add, delete, reorganize\\
+        \textbf{File System}: logical structure of files and ops (open, close, read, write), also manage access rights\\
+        \textbf{Physical Organization}: convert logical refs to files \& records to physical addresses (tracks, sectors), also allication of space and main storage buffers\\
+        \textbf{I/O techniques}: Programmed I/O (no interrupt, transfer through processor), Interrupt driven I/O (through processor but no busy wait), Direct Memory Access\\
+        \textbf{DMA Configurations}: single bus detached DMA, single bus integrated DMA (I/O devices behind DMA), I/O bus (all behind single DMA)\\
+        \textbf{I/O Buffering}: smooth out peaks in I/O demand (eventually all buffers full and no more advantage), transfer input in advance of request, transfer output sometime after, no buffer then time per block is T (input time) + C (compute time), 1 buffer then max (T,C) + M (move from buffer to user memory), 2 then max (T,C) only (OS fill one, user take from other, or other way), or circular\\
+        \textbf{Block Oriented Single Buffer}: anticipated input, when transfer complete block moved to user space and request another immediately, generally speedup but complicates OS logic \& swapping logic\\
+        \textbf{Stream Oriented Single Buffer}: line at a time or byte at a time (each keystroke, or for sensors, controllers)\\
     \end{multicols}
     \end{document}
