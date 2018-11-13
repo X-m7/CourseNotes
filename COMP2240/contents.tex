@@ -146,5 +146,20 @@
         \textbf{Segmentation with VM}: segment table needs some extra bits, to translate to physical seg number + seg table pointer to get base, then + offset and check if within limit\\
         \textbf{Paging \& Segmentation}: user address space broken up to segments, each segment broken up to pages, so first need seg number + seg table pointer to get page table location, then + page number to get frame number, then concatenate with offset\\
         \textbf{Translation Lookaside Buffer}: cache page table entries to avoid 2x memory accesses, contains recently used page table entries, associative lookup in cache to speed up search, works with standard main memory cache\\
+        \underline{\textbf{OS Policies for VM}}: fetch, placement, replacement, resident set management, cleaning, load control\\
+        \textbf{Fetch Policy}: demand paging (seeme best for most purposes, bring in page only when memory reference is made, can cause large number of page faults before settling down), Pre-paging (bring in pages likely to be referenced, such as those adjacent to referenced, if stored contiguously then overhead small, can be triggered by page faults)\\
+        \textbf{Placement Policy}: no performance effect on paging, segmentation same as dynamic partitioning\\
+        \textbf{Replacement Policy}: due to principle of locality often there is high correlation between recent referencing history \& near future referencing patterns, more elaborate policies will have greater overhead, may lock frames to avoid replacement (for kernel, key control structures, I/O buffers, time-critical areas)\\
+        \textbf{Optimal}: choose page for which next reference is furthermost in future, not practical, but least number of page faults\\
+        \textbf{Least Recently Used}: choose page which has not been referenced for the longest time, matches principle of locality, almost as good as optimal, but many implementation difficulties\\
+        \textbf{FIFO}: simple to implement, removes page which has been in memory the longest, no principle of locality, performs badly\\
+        \textbf{Clock}: when page loaded or referenced use bit 1, any frame with use bit 1 is passed over and set to 0, after replacing move clock position forward, can use modify bit as well to prefer replacing unmodified pages\\
+        \textbf{Page Buffering}: improves paging performance, allows simpler replacement policy, when replacing page keep in free or modified page list (keep small number of frames free, frame at head of free list used, add to list at tail, so if was replaced but needed again just get it back)\\
+        \textbf{Resident Set Management}: decide how many pages to bring to main memory, if smaller per process then more process, but small number of pages will increase page faults, beyond certain size more frames will have no effect (locality)\\
+        \textbf{Fixed-Local}: fixed number of frames for process, page replaced is chosen from allocated frames of process\\
+        \textbf{Variable-Global}: easiest to implement, OS has list of free frames, when page fault add free frame to process resident set, if no frames available then OS must replace a page, could use page buffering\\
+        \textbf{Variable-Local}: when load process allocate number of frames, when page fault occurs replace a page in process resident set, reevaluate allocation and increase/decrease to improve performance, more complex but better performance\\
+        \textbf{Cleaning Policy}: determine when modified page should be written out, demand cleaning (write out only when selected for replacement), precleaning (allows writing of pages in batches)\\
+        \textbf{Load Control}: number of processes resident in main memory (multiprogramming level), too few then need to swap to get ready process, too many then thrashing, to reduce level need to choose process to swap out (lowest priority, faulting, last process activated, smallest resident set, largest process, largest remaining execution window)\\
     \end{multicols}
     \end{document}
