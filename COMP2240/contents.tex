@@ -104,5 +104,18 @@
         \textbf{Readers/Writers}: data area shared among many processes, some only read, some only write, any number of readers may simultaneously read the file, only one writer may write to the file, if a writer is writing to the file no reader may read it\\
         \textbf{Mutex Software Support}: assume only basic mem mutex, executing on single or multiprocessor
         \textbf{Peterson's Algorithm}: (flag[id]=true, turn=otherId, while flag[otherId] and turn=1 do nothing, critical, flag[id]=false), mutex enforced using the flags, deadlock prevented using turn (can only be either 1 or 0)\\
+        \underline{\textbf{Deadlock Conditions}}: mutex, hold-and-wait (process may hold resources while waiting for others), no preemption (forcibly unlock resource), circular wait (closed chain of processes exist that each process holds at least one resource needed by next process in chain), first 3 necessary but not sufficient, last one is both (unresolvable is definition of deadlock)\\
+        \textbf{Deadlock Prevention}: indirect (prevent first 3, mutex impossible, hold-and-wait inefficient, preemption practical if possible to save state, ex: memory allocation), direct (prevent circular wait by defining linear ordering of resources, if process allocated $R_i$ can get $R_j$ if $i < j$)\\
+        \textbf{Deadlock Avoidance}: decision dynamically made whether current resource request will potentially lead to deadlock, can block resource allocation only or block process initiation\\
+        \textbf{Deadlock Avoidance Advantages}: not necessary to preempt and rollback processes, less restrictive than deadlock prevention\\
+        \textbf{Deadlock Avoidance Restrictions}: maximum resource requirement must be stated in advance, processes must be independent (no synchronization requirements for order of exec), must have fixed number of resources to allocate\\
+        \textbf{Banker's Algorithm}: resource allocation denial, use 2 vectors (resource/total, available), 2 matrices (claim/needed per process, allocation/already allocated), safe state if at least one sequence of resource allocation to processes that does not result in deadlock (can finish all)\\
+        \textbf{Deadlock Detection}: grant resource request whenever possible, can have checks every request (early detection, simple, but frequest checks consume processor time)\\
+        \textbf{DD Algorithm}: use allocation matrix, request matrix and available vector, also create temporary vector as copy of availability, start with marking all 0 in allocation matrix, afterwards unmarked processes involved in deadlock, loop steps:\\
+        1.\ find unmarked process where requests are $\leq$ available (means it can complete), if none break\\
+        2.\ mark the process, then add its allocated to temporary (copy of available), goto 1\\
+        \textbf{DD Advantages \& Disadvantage}: never delays process init, facilitates online, but inherent preemption losses\\
+        \textbf{Deadlock Recovery}: abort all deadlocked processes, rollback all deadlocked to checkpoints and restart, successively abort deadlocked processes or preempt resources (doing this also requires rollback to before acquired) until deadlock gone\\
+        \textbf{Dining Philosophers}: 5 forks, no 2 philosophers can use the same fork at same time (mutex), no philosopher must starve (also no deadlock), with semaphore wait room, wait left, wait right, eat, release right, release left, release room, room init to 4, with monitor cwait \& get left \& right, release in same order (if empty set true, else csignal)\\
     \end{multicols}
     \end{document}
