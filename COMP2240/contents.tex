@@ -117,5 +117,21 @@
         \textbf{DD Advantages \& Disadvantage}: never delays process init, facilitates online, but inherent preemption losses\\
         \textbf{Deadlock Recovery}: abort all deadlocked processes, rollback all deadlocked to checkpoints and restart, successively abort deadlocked processes or preempt resources (doing this also requires rollback to before acquired) until deadlock gone\\
         \textbf{Dining Philosophers}: 5 forks, no 2 philosophers can use the same fork at same time (mutex), no philosopher must starve (also no deadlock), with semaphore wait room, wait left, wait right, eat, release right, release left, release room, room init to 4, with monitor cwait \& get left \& right, release in same order (if empty set true, else csignal)\\
+        \underline{\textbf{Memory Management}}: memory divided to OS \& user, user divided to each process, need to make sure of reasonable supply of ready processes, reqs:\\
+        \textbf{Relocation}: (need to be swapped in/out, may be in different place, support for this also allows support for next two)\\
+        \textbf{Protection}: (against interference from others, accidental or intentional, must be provided by hardware, memory references must be checked at run time)\\
+        \textbf{Sharing}: (allow controlled access to shared areas without compromising protection, processes running same code should run same address space)\\
+        \textbf{Logical Organization}: (memory organized into linear address space, programs organized to modules, modules can be written \& compiled spearately with cross referencing resolved at runtime, different degrees of protection available to different modules, modules should be shareable as designated by programmer)\\
+        \textbf{Physical Organization}: (could be left to programmer but impractical \& undesirable, memory avaialble for program + data may be insufficient, never know how much space is avaialble if multiprogramming)\\
+        \textbf{Fragmentation}: Internal (data loaded smaller than partition), External (memory outside partitions small pieces)\\
+        \textbf{Fixed Equal-Size Partitioning}: simple with minimal overhead (easy placement), but program may be too big to fit, inefficient utilization, internal fragmentation\\
+        \textbf{Fixed Unequal-Size Partitioning}: can use one queue per partition or one global queue, more flexible but small jobs will not use space efficiently, number of partitions limits number of active processes\\
+        \textbf{Dynamic Partitioning}: variable number and size of partitions, allocated exactly per process, has external fragmentation, can manage with compaction but waste of time\\
+        \textbf{Dynamic Placement Algorithms}: Best-fit (worst, external fragmentation), First-fit, Next-fit
+        \textbf{Address types}: logical (reference to memory location independent of current assignment of data to memory), relative (to some known point), physical/absolute (actual location in main memory, relative + base, compare with bound before access, if OK access, else interrupt)\\
+        \textbf{MM Terms}: frame (fixed length block of main memory), page (fixed length block of data in secondary memory, may be temporarily copied to frame), segment (variable length block of data in secondary memory, whole segment may be copied into main memory or divide it into pages and load them separately)\\
+        \textbf{Paging}: use pages and frames, only internal fragmentation (at the end of the last page of the process)\\
+        \textbf{Page Table}: maintained by OS for each process, contains frame location for each page in process, used to produce physical address (relative from base is logical, first few bits are page number, replace it with frame number to get physical)\\
+        \textbf{Segmentation}: divide program to segments, require all segments to be in memory, no internal fragmentation, less external than dynamic partitioning (can split app to multiple parts instead of one contiguous), usually visible to programmer, typical code \& data in different segments, to get physical address need to get base address + offset via segment table\\
     \end{multicols}
     \end{document}
