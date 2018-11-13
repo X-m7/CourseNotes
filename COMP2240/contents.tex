@@ -1,5 +1,5 @@
 \documentclass[a4paper]{article}
-    \usepackage[margin=0.25in]{geometry}
+    \usepackage[margin=0.15in]{geometry}
     \usepackage{multicol}
 
     \begin{document}
@@ -200,5 +200,32 @@
         \textbf{FM Objectives}: meet data management needs of user, guarantee valid data in file, optimize performance, provide support for variety of storage device types, minimize potential for lost or destroyed data, provide standardized interface to process, provide multi-user support\\
         \textbf{FM User Requirements}: create, delete, read, modify, write files; have controlled access to other users' files; control what type of access allowed to files; restructure files in form appropriate to problem; move data between files; backup \& recover files in case of damage; access by name rather than by identifier\\
         \textbf{FS Architecture}: Access Method (file struct, access, proc data), Logical I/O (files), Basic I/O Superv (sched), Basic FS (place \& buff of blocks), Device Driver (start \& end of req)\\
+        \textbf{File Organization Criteria}: short access time, ease of upd, economy of storage, maintenance, reliability\\
+        \textbf{Pile}: variable length records \& set of fields, chronological order, record access by exhaustive search, utilize space well, easy to update but unsuitable for most apps\\
+        \textbf{Sequential File}: most common form, fixed format for record, key field uniquely ID record, sorted in key seq, easy to store on tape \& disk, suitable for batch (poor perf for queries and/or update of individual records), addition problematic (physical org should match logical org, use separate log file for new records \& batch update, or organize file phys as linked list with cost \& overhead)\\
+        \textbf{Indexed Seq File}: index to quickly reach vicinity of desired record, has overflow file (like log), index has key and pointer to main, index can be multilevel (ex: 1,000,000 can use high level 100 and low level 10,000)\\
+        \textbf{Indexed File}: records accessed via index only (can now use variable length records), can have exhaustive or partial index (only entries to records where field of interest exists), used in apps where timeliness of info is critical (airline reservation, inventory control)\\
+        \textbf{Direct/Hashed File}: hash key, very rapid access, fixed length records, access one at a time (ex: directories, pricing tables, schedules, name list)\\
+        \textbf{B-Tree}: has nodes \& leaves, node contains at least 1 key which uniquely ID file record and more than 1 pointer to child nodes/leaves, each node is limited to same n of max keys, stored in nondecreasing order, each node has one more pointer than keys\\
+        \textbf{B-Tree Characteristics}: has degree d, node has at most 2d-1 keys and 2d children, or 2d pointers, every node except root has at least d-1 keys and d pointers, root has at least 1 key and 2 children, all leaves appear on same level \& is blank, nonleaf node with k pointers contains k-1 keys\\
+        \textbf{B-Tree Insertion}:\\
+        1.\ Search tree for key, if not in tree then reached leaf L\\
+        2.\ if L has less than 2d-1 keys insert\\
+        3.\ if L full split around median key into 2 new nodes with d-1 keys in each \& promote median key to next higher level, place new key in appropriate left/right node, original node is now split\\
+        4.\ insert promoted node to parent node according to 3\\
+        5.\ apply promotion if needed until root reached, if root full split using 3\\
+        \textbf{Ops on Directory}: search, create files, delete files, list dir, update dir
+        \textbf{Directory Structures}: 2 level (master, user dirs below), tree structured (2 level but user dir is tree root too, can use seq file or hashed), acyclic-graph (same file may be in diff dirs, can impl with link)\\
+        \textbf{File Sharing Issues}: access rights (none, knowledge, exec, read, append, update, change protection, del, users can be owner, specific users, user groups, all), simultaneous access\\
+        \textbf{Record Blocking}: typically fixed length, larger reduce transfer time if seq access but need larger buffer, if random then unused records follow too\\
+        \textbf{Fixed Blocking}: fixed length records, integral n of records stored in blocks, internal frag, usually for seq files with fixed record\\
+        \textbf{Variable Length Spanned}: variable length records, packed into blocks with no unused space, efficient storage but hard to impl\\
+        \textbf{Variable Length Unspanned}: as above but no spanning, record size limit and waste of space\\
+        \textbf{File Allocation Issues}: prealloc vs dynalloc (usually hard to estimate max size, dyn alloc in portions), what portion (contiguous unit) size for file alloc (contiguity increase perf, esp for getnext \& transaction oriented, large n of small portions increases table size needed, fixed size portions simplifies space alloc, var or small fixed size portions minimize waste from overalloc), what data struct used to keep track of portion\\
+        \textbf{Variable Large vs Small Fixed}: var better perf, avoid waste, small table, small greater flex, may need large table, no contiguity, blocks alloc as needed\\
+        \textbf{Variable Allocation Strategy}: first fit (fron list), best fit, nearest fit (closest to previous alloc for loc), factors: file type, access pattern, multiprogramming, other perf factors, cache, sched\\
+        \textbf{File Allocation Methods}: contiguous (var portion), chained (linked list), indexed (FAT has one level index per file)\\
+        \textbf{Free Space Management}: bit tables (one bit per block, easy to find, small), chained free portions (no space, but need to read to get pointer), indexing (treat free space as file, one entry per free portion), free block list (blocks have id, can do push down stack (top only) or queue (head \& tail) to keep some in memory)
+        \textbf{Volume}: collection of addressable sectors in secondary mem that OS/app can use to store data, sectors need not be consecutive on physical storage (only appear so), could be merge of smaller vols\\
     \end{multicols}
     \end{document}
