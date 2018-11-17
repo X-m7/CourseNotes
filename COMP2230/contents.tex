@@ -59,5 +59,12 @@
         \textbf{DFS Applications}: find spanning trees, connected components, cut vertices/articulation points, exploring graphs, topological sort, backtracking\\
         \textbf{Breadth First Search}: same as DFS for starting, but instead of recursive set current visit to true, add current to queue, for all in queue dequeue, then for each adjacent to dequeued if was not visited then visit and enqueue, complexity same as DFS\\
         \textbf{BFS Applications}: find spanning trees, connected components, shortest path, exploring graphs, web crawling, social networking, garbage collection, puzzles, games\\
+        \underline{\textbf{Mergesort}}: to merge just compare first element of both lists, get smallest one and put into new list, if one emptied then just grab all from the other, main method simply splits the list into 2, recurse on both, then merge, is stable\\
+        \textbf{Bubblesort}: start from end, keep swapping if out of order, after each pass will get smallest at the start, keep going while ignoring the ones at the start (already sorted), $n^2$, stable\\
+        \textbf{Insertion sort}: start with sorted list of 1 element (the first), then insert a[2] into the sorted list (only a[1]), then insert a[3] into the sorted list of a[1], a[2], and so on, $n^2$, stable\\
+        \textbf{Quicksort}: partition (values before partition is less than, values after partition is greater than or equal to, goes through the whole portion), then recurse on the halves before and after the partition, worst $n^2$, but average with random partition n log n, not stable\\
+        \textbf{Counting Sort}: init count array, count how many times index appears in actual array, convert count array to cumulative, get cumulative count per element and use it as index in new array, subtract the count (for duplicates), copy new array to original, complexity n + m, range from 0 to m, stable\\
+        \textbf{Radix Sort}: use counting sort on each digit, complexity is kn, k is max number of digits, stable\\
+        \textbf{Random Select}: worst case $n^2$, average $n$\\
     \end{multicols}
     \end{document}
