@@ -45,5 +45,12 @@
         \textbf{Master Theorem}: $T(n) = aT(n/b)+f(n), f(n) = \Theta (n^k)$, $T(n) = \Theta (n^k)$ if $a < b^k$, $T(n) = \Theta (n^k \log n)$ if $a = b^k$, $T(n) = \Theta (n^{\log_b a})$ if $a > b^k$\\
         \textbf{Smoothness}: if the function is non decreasing from N inclusive to infinity, and for every integer $b \geq 2, f(bn) = O(f(n))$\\
         \textbf{Formal Smoothness}: for any integer $b \geq 2, C > 0, N > 0, f(bn) \leq Cf(n), f(n) \leq f(n+1)$, for all $n \geq N$\\
+        \underline{\textbf{Binary Tree Traversal}}: preorder (root, left, right), inorder (left, root, right), postorder (left, right, root)\\
+        \textbf{Binary Search Tree}: to insert search through and put in spot where it would be, to delete node with 0 or 1 child simply delete like linked list, else find minimum in right subtree, swap with target, and delete\\
+        \textbf{Heap}: if array start from 1 then left child is $2i$, right child is $2i+1$, to siftdown maxheap get larger child, if child is larger than current move child up, look at next child, to delete swap last in array with target, siftdown swapped, to insert do so at end, then siftup (if current is greater than parent move parent down, look at next parent), to heapify do siftdown from $i = n/2 \to 1$\\
+        \textbf{Heap Complexities}: lg n for delete, insert (O only), \& siftdown (tree height), n for heapify\\
+        \textbf{Indirect Heap}: key, into (key index into heap index), outof (heap index into key index), whenever setting outof[x] = y also set into[y] = x, for increase/decreaseKey just siftup the modified node\\
+        \textbf{Heapsort}: heapify (maxheap), largest element is in the first, swap with last in the heap, decrease the heap length, siftdown on root, repeat until heap has only 1 element (which would be minimum)\\
+        \textbf{Disjoint Sets}: stored as array of parents, parent[i] is the parent of element i, makeset (constructs new set with one element from parameter, set parent to itself), findset (returns the marked member of the set containing parameter, keep going through parent, while doing so check the node parent, if not root make it root and continue to next parent), union (replace sets containing the parameters with the union, find the sets of both and make one of the sets the parent of the other, use the deepest tree as the parent)\\
     \end{multicols}
     \end{document}
