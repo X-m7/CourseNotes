@@ -38,6 +38,7 @@
         \textbf{Complement}: of simple graph, denoted as $\bar{G}$, same vertices, edge in $\bar{G}$ iff not in $G$\\
         \textbf{Tree}: connected and acyclic; connected and has $n - 1$ edges, acyclic and has $n - 1$ edges, level of vertex is simple path length from root, height is max length\\
         \textbf{Homogeneous Recurrence}: characteristic equation ($a_0t_n + a_1t_{n-1} + \cdots + a_k t_{n-k} = 0$) linear, homogeneous (combination of $t_i = 0$), constant coefficients, guess $t_n = x^n$, unknown x, so $a_0x^n + a_1x^{n-1} + \cdots + a_k x^{n-k} = 0$, factor out $x^{n-k}$, so $p(x) = a_0x^k + a_1x^{k-1} + \cdots + a^k x^0 = 0$, so the general solution is $\sum\nolimits_{i=1}^k c_i r_i^n$, where $r$ is the roots of the equation (if distinct)\\
-        \textbf{Homogeneous Recurrence Example}: $T(n) = 2T(n-1), T(1) = 1, T(n) - 2T(n-1) = 0, T(n) = x^n, T(n-1) = x^{n-1}$, solve $x^n-2x^{n-1} = 0, x = 2, T(n) = c_1 2^n, T(1) = 1 = c_1 2^1, c_1 = 0.5$\\
-   \end{multicols}
+        \textbf{HR Example}: $T(n) = 2T(n-1), T(1) = 1, T(n) - 2T(n-1) = 0, T(n) = x^n, T(n-1) = x^{n-1}$, solve $x^n-2x^{n-1} = 0, x = 2, T(n) = c_1 2^n, T(1) = 1 = c_1 2^1, c_1 = 0.5$\\
+        \textbf{HR with Non Distinct Roots}: for each non distinct root include it but multiply with n each time ($c_1r^n+c_2nr^n+c_3n^2r^n+\cdots$)\\
+    \end{multicols}
     \end{document}
