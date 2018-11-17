@@ -54,5 +54,10 @@
         \textbf{Disjoint Sets}: stored as array of parents, parent[i] is the parent of element i, makeset (constructs new set with one element from parameter, set parent to itself), findset (returns the marked member of the set containing parameter, keep going through parent, while doing so check the node parent, if not root make it root and continue to next parent), union (replace sets containing the parameters with the union, find the sets of both and make one of the sets the parent of the other, use the deepest tree as the parent)\\
         \underline{\textbf{Interpolation Search}}: estimates where the search key is in the array, assumes values in array increase linearly with index, worst case n but with random keys average case is lg lg n\\
         \textbf{Hashing}: average $1 + \frac{n}{2m}$\\
+        \underline{\textbf{Topological Sort}}: DFS, but for every dead end (all incident vertices visited already) add to head of list\\
+        \textbf{Depth First Search}: set visit to false for all, then for each unvisited node run recursive (in case of disconnected graph), in recursive set visit to true for the vertex and recurse on all adjacent (if not visited), complexity is $\Theta (|V| + |E|)$ for adjacency list, with adjacency matrix is $\Theta (|V|^2)$ (to get adjacent vertices need to go through whole row/column)\\
+        \textbf{DFS Applications}: find spanning trees, connected components, cut vertices/articulation points, exploring graphs, topological sort, backtracking\\
+        \textbf{Breadth First Search}: same as DFS for starting, but instead of recursive set current visit to true, add current to queue, for all in queue dequeue, then for each adjacent to dequeued if was not visited then visit and enqueue, complexity same as DFS\\
+        \textbf{BFS Applications}: find spanning trees, connected components, shortest path, exploring graphs, web crawling, social networking, garbage collection, puzzles, games\\
     \end{multicols}
     \end{document}
