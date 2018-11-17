@@ -4,6 +4,40 @@
 
     \begin{document}
     \begin{multicols}{2}
-
-    \end{multicols}
+        \scriptsize
+        \noindent\textbf{Algorithm}: precise, unambiguous, step by step procedure for carrying out some calculation or more generally for solving some problem\\
+        \textbf{Algorithmics}: study of algorithms (design \& analysis)\\
+        \textbf{Algorithm Properties}: Input, Output, Precision, Determinism, Finiteness, Correctness, Generality\\
+        \textbf{Algorithm Creation Process}: understand, design, analyse (possibly back to design), implement\\
+        \textbf{Analysis}: correctness, termination, simplicity, generality, time, space\\
+        \textbf{Logarithms}: $b^e = x$ iff $\log_b x = e$; $\log xy = \log x + \log y$, $x, y > 0$; $\log \frac{x}{y} = \log x - \log y$, $x, y > 0$; $\log_b x^y = y \log_b x$; $\log_a x = \frac{\log_b x}{\log_b a}, a > 0, a \neq 1$; $\log_b x > \log_b y, b > 1, x > y > 0$\\
+        \textbf{Series}: $\sum\nolimits_{i=1}^n i = \frac{n(n+1)}{2} = \Theta (n^2)$; $\sum\nolimits_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6} = \Theta (n^3)$; $\sum\nolimits_{i=1}^n i^3 = {(\sum\nolimits_{i=1}^n i)}^2 = \Theta (n^4)$; $\sum\nolimits_{i=1}^n i^k \approx \frac{n^{k+1}}{k+1} = \Theta (n^{k+1})$; $\sum\nolimits_{i=0}^n a^i = \frac{a^{n+1}-1}{a-1} = \Theta (a^n)$; $\sum\nolimits_{i=1}^n i2^i = (n-1)2^{n+1}+2 = \Theta (n2^n)$; $\sum\nolimits_{i=1}^n \frac{1}{i} \approx \ln n + 0.57 = \Theta (\lg n)$; $\sum\nolimits_{i=1}^n \lg i = \Theta (n \lg n)$; $\sum\nolimits_{i=1}^n i \lg i = \Theta (n^2 \lg n)$\\
+        \textbf{Theorem}: mathematical statement that has been proved true\\
+        \textbf{Lemma}: `small' theorem, usually used in proof of a more important mathematical statement\\
+        \textbf{Corollary}: mathematical statement which easily follows from a theorem\\
+        \textbf{Proof}: logical argument that a mathematical statement is true\\
+        \textbf{Proof by Construction}: mathematical statement about the existence of an object can be proved by constructing the object\\
+        \textbf{Proof by Contradiction}: assume that a mathematical statement is false and show that the assumption leads to a contradiction\\
+        \textbf{Polynomial Degree}: highest power\\
+        \textbf{Intervals}: closed ($[a,b] = x | a \leq x \leq b$), open ($(a,b) = x | a < x < b$), half-open (either side)\\
+        \textbf{Subsequence}: consists of only certain terms in the same order as the full sequence\\
+        \textbf{Substring}: assume string index start from 1, then for $t[i,j]$ if $i < j$ then substring is from $i$ to $j$ inclusive, if $i = j$ then substring is only $i$, else then empty string\\
+        \textbf{Boolean Expression}: containing boolean variables, operators, parentheses\\
+        \textbf{Normal Forms}: conjunctive (clause linked with $\wedge$, inside has $\vee$), disjunctive (opposite)\\
+        \textbf{Upper Bound}: $u$ such that $x \leq u$ for all $x \in X$, $X$: all reals\\
+        \textbf{Lower Bound}: $l$ such that $x \geq l$ for all $x \in X$\\
+        \textbf{Supremum}: least upper bound\\
+        \textbf{Infimum}: greatest lower bound\\
+        \textbf{Graph}: consists of set of vertices and edges, edge is unordered (unless directed) pair of vertices, simple if without loops or multiple edges\\
+        \textbf{Degree}: number of edges incident on the vertex\\
+        \textbf{Path}: alternating sequence of vertices and edges, starting and ending with vertices, simple has no repeated vertices\\
+        \textbf{Diameter}: maximum distance between any two vertices\\
+        \textbf{Cycle}: path starting and ending at the same vertex with actual length, simple if without repeated vertices\\
+        \textbf{Hamiltonian Cycle}: cycle that contains each vertex exactly once\\
+        \textbf{Euler Cycle}: cycle with no repeated edges that contains all edges and vertices, exists iff connected and degree of every vertex is even\\
+        \textbf{Complement}: of simple graph, denoted as $\bar{G}$, same vertices, edge in $\bar{G}$ iff not in $G$\\
+        \textbf{Tree}: connected and acyclic; connected and has $n - 1$ edges, acyclic and has $n - 1$ edges, level of vertex is simple path length from root, height is max length\\
+        \textbf{Homogeneous Recurrence}: characteristic equation ($a_0t_n + a_1t_{n-1} + \cdots + a_k t_{n-k} = 0$) linear, homogeneous (combination of $t_i = 0$), constant coefficients, guess $t_n = x^n$, unknown x, so $a_0x^n + a_1x^{n-1} + \cdots + a_k x^{n-k} = 0$, factor out $x^{n-k}$, so $p(x) = a_0x^k + a_1x^{k-1} + \cdots + a^k x^0 = 0$, so the general solution is $\sum\nolimits_{i=1}^k c_i r_i^n$, where $r$ is the roots of the equation (if distinct)\\
+        \textbf{Homogeneous Recurrence Example}: $T(n) = 2T(n-1), T(1) = 1, T(n) - 2T(n-1) = 0, T(n) = x^n, T(n-1) = x^{n-1}$, solve $x^n-2x^{n-1} = 0, x = 2, T(n) = c_1 2^n, T(1) = 1 = c_1 2^1, c_1 = 0.5$\\
+   \end{multicols}
     \end{document}
