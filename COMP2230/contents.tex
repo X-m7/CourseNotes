@@ -52,5 +52,7 @@
         \textbf{Indirect Heap}: key, into (key index into heap index), outof (heap index into key index), whenever setting outof[x] = y also set into[y] = x, for increase/decreaseKey just siftup the modified node\\
         \textbf{Heapsort}: heapify (maxheap), largest element is in the first, swap with last in the heap, decrease the heap length, siftdown on root, repeat until heap has only 1 element (which would be minimum)\\
         \textbf{Disjoint Sets}: stored as array of parents, parent[i] is the parent of element i, makeset (constructs new set with one element from parameter, set parent to itself), findset (returns the marked member of the set containing parameter, keep going through parent, while doing so check the node parent, if not root make it root and continue to next parent), union (replace sets containing the parameters with the union, find the sets of both and make one of the sets the parent of the other, use the deepest tree as the parent)\\
+        \underline{\textbf{Interpolation Search}}: estimates where the search key is in the array, assumes values in array increase linearly with index, worst case n but with random keys average case is lg lg n\\
+        \textbf{Hashing}: average $1 + \frac{n}{2m}$\\
     \end{multicols}
     \end{document}
