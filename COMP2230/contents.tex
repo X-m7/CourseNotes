@@ -1,6 +1,7 @@
 \documentclass[a4paper]{article}
     \usepackage[margin=0.25in]{geometry}
     \usepackage{multicol}
+    \usepackage{graphicx}
 
     \begin{document}
     \begin{multicols}{2}
@@ -97,5 +98,7 @@
         \underline{\textbf{Text Searching}}: with basic worst case for n string and m pattern is $\Theta(m(n-m+1))$ if no pattern match, with random test and patterns takes $\Theta(n-m)$, ineffective for longer patterns and when particularly when text contains repeated elements $\Theta(n^2), m=n/2$\\
         \textbf{Rabin-Karp Algorithm}: compute hash/fingerprint table, then instead of checking every substring check fingerprint first (using mod, convert the binary string to number and mod with prime larger than the pattern), $\Theta(n+m)$ expected running time now, worst case same as basic\\
         \textbf{Knuth-Morris-Pratt Algorithm}: use shift table to skip characters already checked and known to not match, whole algorithm takes $O(m+n)$, shift table making takes $O(m)$\\
+        \underline{\textbf{Coin-Weighing Problem}}:\\
+        \includegraphics[width=\linewidth]{coinweigh.png}\\
     \end{multicols}
     \end{document}
