@@ -161,5 +161,30 @@
         \textbf{Adjusting estimates}: done for specific activities as risks, resources \& situation particulars become more actively defined, mitigate risks by recognising mistakes can occur (ex: include independent testers to check design), allowing for difficult conditions in contracts affecting scope (if excessive ground water adjust foundation estimates)\\
         \textbf{Reasons for adjusting estimates}: interaction costs hidden in estimates, normal conditions do not apply, things go wrong in projects, changes in project scope \& plans\\
         \textbf{Estimating DB}: estimated \& actuals on labour, costs, equipment, benchmarking ratios, code of accounts for various project types\\
+        \underline{\textbf{Project network}}: flow chart that graphically depicts sequence, interdependencies, start \& finish times of project job plan of activities\\
+        \textbf{Critical path}: longest activity paths through network that allows for completion of all activities; shortest expected time in which entire project can be completed; 0 slack, also consider deps caused by resource constraints\\
+        \textbf{Project network benefits}: provides basis for scheduling labour \& equipment, enhance comms among project participants, provides estimate of project duration, provides basis for budgeting cash flow, highlights `critical' activities that cannot be delayed, highlights activities that can be compressed to meet deadline, help managers get \& stay on plan\\
+        \textbf{Late finish}: latest activity can finish \& not delay following activity, LS + DUR\\
+        \textbf{Late start}: latest activity can start \& not delay following activity, LF --- DUR\\
+        \textbf{Early finish}: earliest an activity can finish if all preceding activities are finished by early finish, ES + DUR\\
+        \textbf{Early start}: earliest an activity can start, largest early finish of all predecessors, EF ---  DUR\\
+        \textbf{Activity}: project element that requires time\\
+        \textbf{Merge}: activity with 2 or more preceding activities on which it depends\\
+        \textbf{Parallel/concurrent}: can occur independently \& if desired not at the same time\\
+        \textbf{Path}: sequence of connected, dependent activities\\
+        \textbf{Event}: point in time when activity started/completed, does not consume time\\
+        \textbf{Burst}: activity with more than one activity immediately following it\\
+        \textbf{Rules for dev project network}: flow left to right, activity cannot begin until all predecessors complete, arrows on networks indicate precedence \& flow, each activity should have unique id number, id must be larger than predecessors, no loops \& conditionals, use common start \& stop nodes\\
+        \textbf{Total slack}: amount of time activity can be delayed \& not delay project, time activity can exceed early finish date without affecting project end date/imposed completion date, LS --- ES or LF --- EF\\
+        \textbf{Sensitivity}: likelihood original critical paths will change once project initiated\\
+        \textbf{Free slack (float)}: amount of time activity can be delayed after start of longer parallel activities, how long activity can exceed EF without affecting ES of successors, allows flexibility in scheduling scarce resources\\
+        \textbf{Laddering}: activities broken into segments so following activity can begin sooner \& not delay work\\
+        \textbf{Lags}: minimum amount of time dependent activity must be delayed to begin/end, lengthy activities broken down to reduce delay in start of successor (if successor only dep on part finished early), with lags start and finish can have different slacks\\
+        \textbf{Lag types}:\\
+        \textit{Finish-to-start}: order materials, 1 day to place order \& 19 days to receive goods, can use for laddering\\
+        \textit{Start-to-start}: can also be used for laddering, reduce network detail \& project delays, often used in concurrent engineering (instead of completely sequential, can start next stage once part of predecessor complete)\\
+        \textit{Finish-to-finish}: test cannot be completed any earlier than 4 days after prototype complete, cannot be f-s because subcomponent test does not qualify as complete sys test, which takes 4 days\\
+        \textit{Start-to-finish}: system doc cannot end until 3 days after test start, since relevant info is generated after 3 days of testing\\
+        \textbf{Hammock activity}: spans over segment of project, used to aggregate sections of project to facilitate getting right amount of detail for specific sections of project, used to identify fixed resources/costs over segment of project (inspection services, consultants, construction management)\\
     \end{multicols}
     \end{document}
