@@ -62,5 +62,25 @@
         End while\\
         Set $K' = active\mbox{-}states$ and $A' = \{ A \in K' : Q \cap A \neq \varnothing \}$\\
         \textbf{Extra}: when making FSM may start with complement\\
+        \underline{\textbf{Regular expressions}}:\\
+        \textbf{Allowable}: $\varnothing, \varepsilon$, every element of $\Sigma$, if $\alpha, \beta$ are regex then so are $\alpha\beta, \alpha\cup\beta, \alpha^*, \alpha^+, (\alpha)$, no actual need for rules for $\varepsilon$ and $\alpha^*$\\
+        \textbf{Order of operations}: Kleene star, concatenation, union (high to low)\\
+        \textbf{FSM \& Regex equivalence}: can create FSM to accept regex (do so for each rule), algorithm exists for other way\\
+        \boldmath$fsmtoregexheuristic(M: FSM)$\unboldmath: remove unreachable states, if no accepting states return $\varnothing$, if start state part of loop create new start state $s$ \& connect $s$ to original start via $\varepsilon$-transition, if multiple accepting states create new accepting state \& connect old ones to new with $\varepsilon$-transition, if only 1 state return $\varepsilon$, rip out all states other than start \& accept, return regex\\
+        \boldmath$fsmtoregex(M: FSM)$\unboldmath: $buildregex(standardize(M))$\\
+        \boldmath$standardize(M: FSM)$\unboldmath: remove unreachable states, create start \& accepting if needed (from heuristic), if multiple transitions exist between 2 states collapse, create any missing transitions with $\varnothing$\\
+        \boldmath$buildregex(M: FSM)$\unboldmath:\\
+        If no accepting return $\varnothing$, if only 1 state return $\varepsilon$\\
+        While states exist that are not start or accepting\\
+        Select some state $rip$\\
+        For every transition from $p$ to $q$\\
+        If both $p$ \& $q$ are not $rip$ compute new transition ($R'(p,q) = R(p,q) \cup R(p,rip) {R(rip, rip)}^* R(rip, q$), either direct or via $rip$), then remove $rip$\\
+        End for\\
+        End while\\
+        Return final regex\\
+        \underline{\textbf{Regular grammar}}:\\
+        \textbf{Quadruple}: $(V, \Sigma, R, S)$, $V$ = rule alphabet, both nonterminals \& terminals, $\Sigma$ = terminals, $\subseteq V$, $R$ = finite set of rules, LHS single nonterminal, RHS is $\varepsilon$, single terminal or single terminal + single nonterminal, $S$ = nonterminal\\
+        \textbf{Regular Languages \& Grammar equivalence}: construction, both ways\\
+        \boldmath$grammartofsm(G)$\unboldmath: create separate state for each nonterminal, start state is $S$, if rule exist with single terminal RHS create new state labeled \#, for each rule $X \to aY$ create transition from $X$ to $Y$ labeled $a$, if $X \to a$ go to \#, if $X \to \varepsilon$ mark as accept, mark state \# as accept, if undefined (state, input) pairs remaining point them to dead state \& add loops to dead state for each character\\
     \end{multicols}
     \end{document}
