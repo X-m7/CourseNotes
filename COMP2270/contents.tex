@@ -1,5 +1,6 @@
 \documentclass[a4paper]{article}
     \usepackage[margin=0in]{geometry}
+    \usepackage{amssymb}
     \usepackage{multicol}
 
     \begin{document}
@@ -25,5 +26,41 @@
         \boldmath$firstchars(L)$\unboldmath: $\{ w : \exists y \in L (y = cx \wedge c \in \Sigma _L \wedge x \in \Sigma _L^* \wedge w \in c^*) \}$, closed under FIN but not INF (since result is first character $^*$)\\
         \boldmath$chop(L)$\unboldmath: $\{ w : \exists x \in L (x = x_1 c x_2, x_1 \in \Sigma_L^*, x_2 \in \Sigma_L^*, c \in \Sigma_L, |x_1| = |x_2|$, and $w = x_1 x_2)$\\, language where all strings have exact middle character removed, must have had odd length to begin with, closed under FIN but not INF (can get empty set if never odd length)\\
         \textbf{Extra}: to describe language with at least 2 different substrings of length 2 $L = \{ w \in {\{a,b\}}^* : \exists x, y (x \neq y \wedge |x| = 2 \wedge |y| = 2 \wedge Substr(x,w) \wedge Substr(y,w)) \}$\\
+        \underline{\textbf{Finite State Machines}}\\
+        \textbf{DFSM Quintuple}: $M = (K, \Sigma, \delta, s, A)$, $K$ = finite set of states, $\Sigma$ = alphabet, $\delta$ = transition function from $(K \times \Sigma)$ to $K$, $s \in K$ = initial state, $A \subseteq K$ = set of accepting states\\
+        \textbf{Configuration}: element of $K \times \Sigma^*$, current state and remaining input\\
+        \textbf{Yields relation}: $|-_M$, relates 2 configurations if $M$ can move from the first to the second in 1 step, $|-_M^*$ for 0 or more\\
+        \textbf{Computation}: finite sequence of configurations for some $n \geq 0$ such that $C_0$ is an initial configuration, $C_n$ is of the form $(q, \varepsilon)$ for some state $q \in K_M$ and $C_0 |-_M C_1 |-_M C_2 |-_M \ldots |-_M C_n$\\
+        \textbf{DFSM will halt in $|w|$ steps}: execute computation from $C_0$ to $C_n$, each step will consume one character, so $n = |w|$, $C_n$ is either accepting or rejecting configuration, so will halt after $|w|$ steps\\
+        \textbf{Parity}: odd if number of 1 is odd for binary string\\
+        \boldmath$MinDFSM(M: DFSM)$\unboldmath:\\
+        Initialise classes with an accepting class \& non-accepting class\\
+        For each class with more than 1 state\\
+        For each state and character check which class it goes to\\
+        If behaviour differs between states split them\\
+        End for\\
+        End for\\
+        Go through all the classes again until no splitting happens\\
+        Each class becomes its own state, transitions already defined above\\
+        \textbf{Number of states $\geq$ equivalence classes in L}: suppose it is less than equivalence classes, then by pigeonhole principle there must be at least 1 state that contains strings from 2 equivalence classes, but then future behaviour on these two strings will be identical, which is not consistent with the fact that they are in different equivalence classes\\
+        \textbf{NDFSM Quintuple}: replace $\delta$ with $\Delta$, transition relation, finite subset of $(K \times (\Sigma \cup \{\varepsilon\})) \times K$\\
+        \textbf{NDFSM vs DFSM}: can enter configuration with input symbols left but no move available (halt without accepting), can enter configuration from which 2 or more competing transitions available ($\varepsilon$-transition, more than 1 transition for single input character)\\
+        \boldmath$eps(q)$\unboldmath: $\{ p \in K : (q,w) |-^*_M (p,w) \}$, closure of $\{q\}$ under relation $\{ (p,r)$: there is a transition $(p, \varepsilon, r) \in \Delta \}$, to calculate initialise $result = \{q\}$, add all transitions $(p, \varepsilon, r) \in \Delta$ where $p \in result, r \notin result$ to $result$, then return $result$\\
+        \boldmath$ndfsmtodfsm(M: NDFSM)$\unboldmath:\\
+        Compute $eps(q)$ for each state $q$, $s' = eps(s)$ (initial state)\\
+        Set $active\mbox{-}states = \{s'\}$ (set of set of states) and $\delta' = \varnothing$\\
+        While $\exists Q \in active\mbox{-}states$ for which $\delta'$ has not been computed //computing $\delta'$\\
+        For each $c \in \Sigma_M$\\
+        Set $new\mbox{-}state = \varnothing$\\
+        For each state $q \in Q$\\
+        For each state $p : (q, c, p) \in \Delta$\\
+        Set $new\mbox{-}state = new\mbox{-}state \cup eps(p)$\\
+        End for\\
+        Add $(Q, c, new\mbox{-}state)$ to $\delta'$, if $new\mbox{-}state \notin active\mbox{-}states$ insert it\\
+        End for\\
+        End for\\
+        End while\\
+        Set $K' = active\mbox{-}states$ and $A' = \{ A \in K' : Q \cap A \neq \varnothing \}$\\
+        \textbf{Extra}: when making FSM may start with complement\\
     \end{multicols}
     \end{document}
