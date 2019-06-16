@@ -62,7 +62,7 @@
         End while\\
         Set $K' = active\mbox{-}states$ and $A' = \{ A \in K' : Q \cap A \neq \varnothing \}$\\
         \textbf{Extra}: when making FSM may start with complement\\
-        \underline{\textbf{Regular expressions}}:\\
+        \underline{\textbf{Regular expressions}}\\
         \textbf{Allowable}: $\varnothing, \varepsilon$, every element of $\Sigma$, if $\alpha, \beta$ are regex then so are $\alpha\beta, \alpha\cup\beta, \alpha^*, \alpha^+, (\alpha)$, no actual need for rules for $\varepsilon$ and $\alpha^*$\\
         \textbf{Order of operations}: Kleene star, concatenation, union (high to low)\\
         \textbf{FSM \& Regex equivalence}: can create FSM to accept regex (do so for each rule), algorithm exists for other way\\
@@ -78,9 +78,20 @@
         End for\\
         End while\\
         Return final regex\\
-        \underline{\textbf{Regular grammar}}:\\
+        \underline{\textbf{Regular grammar}}\\
         \textbf{Quadruple}: $(V, \Sigma, R, S)$, $V$ = rule alphabet, both nonterminals \& terminals, $\Sigma$ = terminals, $\subseteq V$, $R$ = finite set of rules, LHS single nonterminal, RHS is $\varepsilon$, single terminal or single terminal + single nonterminal, $S$ = nonterminal\\
         \textbf{Regular Languages \& Grammar equivalence}: construction, both ways\\
         \boldmath$grammartofsm(G)$\unboldmath: create separate state for each nonterminal, start state is $S$, if rule exist with single terminal RHS create new state labeled \#, for each rule $X \to aY$ create transition from $X$ to $Y$ labeled $a$, if $X \to a$ go to \#, if $X \to \varepsilon$ mark as accept, mark state \# as accept, if undefined (state, input) pairs remaining point them to dead state \& add loops to dead state for each character\\
+        \underline{\textbf{Nonregular languages}}
+        \textbf{Number of regular languages}: countably infinite, upper bound is number of FSM/regex, lower bound is every element of $a^+$ as its own language\\
+        \textbf{Every finite language is regular}: union them all\\
+        \textbf{Show that L is regular}: finite, FSM, regex, finite equivalence classes, regular grammar, closure theorems\\
+        \textbf{Closure properties}: union, concatenation, Kleene star, complement (swap accept \& not, need all transitions explicitly, dead states \& DFSM), intersection ($\neg(\neg L_1 \cup \neg L_2)$, De Morgan's law), difference ($L_1 \cap \neg L_2$), reverse (turn start to accept, create new start connected by $\varepsilon$ to accepting states, flip transitions), letter substitution ($letsub(L_1) = \{ w \in \Sigma_2^* : \exists y \in L_1 \wedge w = y$ except every character $c$ of $y$ is replaced by $sub(c) \}$, $sub$ = function from $\Sigma_1$ to $\Sigma_2^*$)\\
+        \textbf{Pumping theorem}: $\exists k \geq 1 (\forall $strings $w \in L, $where$ |w| \geq k (\exists x, y, z (w = xyz, |xy| \leq k, y \neq \varepsilon, \forall q \geq 0 (x y^q z$ is in L$))))$\\
+        \textbf{Using closure to prove nonregular}: assume it is regular, use closure with known regular language, result is known nonregular language, so it must be nonregular, ex: $\#_a (w) = \#_b (w)$, intersect with $a^* b^*$ to get $a^n b^n$, intersection \& complement most useful\\
+        \textbf{Octal divisible by 7}: 0, 7, 16, 25, \ldots, true only if sum of digits divisible by 7, so states in FSM are mod 7, is regular\\
+        \textbf{Extras}:\\
+        \boldmath$a^i b^j c^k; i, j, k >= 0$, if $i = 1$ then $j = k$\unboldmath: can change conditions to $i \neq 1 \vee j = k$, all strings with length $\geq 1$ is pumpable, so need to intersect with $a b^* c^*$, so $i = 1$ guaranteed and results in $a b^j c^k; j, k > 0 \wedge j = k$, then use pumping theorem\\
+        \boldmath$a^i b^j, i \neq j$\unboldmath: must use $a^k b^{k+k!}$, if only use $a^k b^{k+1}$ can just pump 2 $a$ at a time to skip the equal part, $y = a^p$ for some nonzero $p$, pump in $\frac{k!}{p}$ times (must be integer because $p < k$), get $k + (\frac{k!}{p})p = k+k! $, alternatively prove that the complement is not regular using closure ($\neg L = a^n b^n \cup \{$out of order$\}$, intersect with $a^* b^*$ to get $a^n b^n$)\\
     \end{multicols}
     \end{document}
