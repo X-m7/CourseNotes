@@ -82,7 +82,7 @@
         \textbf{Quadruple}: $(V, \Sigma, R, S)$, $V$ = rule alphabet, both nonterminals \& terminals, $\Sigma$ = terminals, $\subseteq V$, $R$ = finite set of rules, LHS single nonterminal, RHS is $\varepsilon$, single terminal or single terminal + single nonterminal, $S$ = nonterminal\\
         \textbf{Regular Languages \& Grammar equivalence}: construction, both ways\\
         \boldmath$grammartofsm(G)$\unboldmath: create separate state for each nonterminal, start state is $S$, if rule exist with single terminal RHS create new state labeled \#, for each rule $X \to aY$ create transition from $X$ to $Y$ labeled $a$, if $X \to a$ go to \#, if $X \to \varepsilon$ mark as accept, mark state \# as accept, if undefined (state, input) pairs remaining point them to dead state \& add loops to dead state for each character\\
-        \underline{\textbf{Nonregular languages}}
+        \underline{\textbf{Nonregular languages}}\\
         \textbf{Number of regular languages}: countably infinite, upper bound is number of FSM/regex, lower bound is every element of $a^+$ as its own language\\
         \textbf{Every finite language is regular}: union them all\\
         \textbf{Show that L is regular}: finite, FSM, regex, finite equivalence classes, regular grammar, closure theorems\\
@@ -103,11 +103,12 @@
         \textbf{Concatenation}: use 2 nonterminals together in RHS, generate each separately\\
         \boldmath$a^n b^n$\unboldmath: $S \to aSb | \varepsilon$\\
         \textbf{Balanced parentheses}: $S \to \varepsilon | SS | (S)$\\
-        \boldmath$w w^R$\unboldmath: $S \to aSa | bSb | \varepsilon$\\
+        \boldmath$w w^R$\unboldmath\textbf{(Even palindrome)}: $S \to aSa | bSb | \varepsilon$\\
         \boldmath$\#_a (w) = \#_b (w)$\unboldmath: $S \to aSb | bSa | SS | \varepsilon$\\
         \textbf{Arithmetic}: $S \to E + E | E * E | (E) | id$\\
         \boldmath${(a^n b^n)}^*$\textbf{(each region can have different $n$)}\unboldmath: $S \to MS | \varepsilon, M \to aMb | \varepsilon$\\
         \boldmath$a^n b^m: n \neq m$\unboldmath: $S \to A,B$ (more $a$ than $b$, more $b$ than $a$), $A \to a, aA, aAb$ (at least one extra generated), $B \to b, Bb, aBb$\\
+        \boldmath$a^n b^m c^p d^q : m+n = p+q$\unboldmath: $S \to aSd | T | U, T \to aTc | V, U \to bUd | V, V \to bVc | \varepsilon$\\
         \textbf{Removing unproductive rules}: mark every nonterminal as productive \& every terminal as productive, if RHS all productive then mark LHS productive, loop until no changes, remove unproductive\\
         \textbf{Removing unreachable rules}: mark start as reachable \& all others as not, if LHS reachable mark all nonterminals in RHS as reachable, loop until no changes, remove unreachable\\
         \textbf{Parse trees}: leaf nodes are terminals except $\varepsilon$, root is start, all others are nonterminals\\
@@ -118,5 +119,28 @@
         \textbf{Removing null rules}: mark all nonterminals in null rules as nullable, if any rule has nullable RHS then mark LHS as nullable, then for all modifiable rules (RHS has at least 1 nullable) add new rules containing variant without nullable, remove null rules\\
         \textbf{Removing symmetric rules}: force branching to 1 direction, replace $S \to SS$ with $S \to SS_1 | S_1$ for left branching, then make $S_1$ do what $S$ originally did\\
         \textbf{Operator order}: if parsed first (ex: in arithmetic, $E \to E + T$) then lowest priority\\
+        \underline{\textbf{Chomsky Normal Form}}\\
+        \textbf{Normal form}: for set C of data is a set of syntactically valid objects, for every element of C there is an equivalent element in F with respect to some set of tasks (possibly except finite exceptions), and at least some tasks are easier to perform on elements of F than C\\
+        \textbf{CNF}: RHS has 1 terminal or 2 nonterminals, parsers can use binary trees, exact length of derivations known ($|w| - 1$ applications of nonterminal rules \& $|w|$ applications of terminal rules)\\
+        \textbf{Conversion to CNF}: remove null rules, remove unit productions ($A \to B$), remove mixed rules (RHS length > 1 \& has terminal), remove long rules (length > 2)\\
+        \textbf{Remove unit productions}: pick one $X \to Y$, remove, for every rule $Y \to \ldots$ make new rule $X \to \ldots$ unless it has already been removed once\\
+        \textbf{Remove mixed rules}: make new nonterminal $T_a$ for each terminal $a$, for all qualifying rules substitute terminals for new nonterminals, then add rules $T_a \to a$ for all pairs\\
+        \textbf{Remove long rules}: chain them, ex: $A \to BCDE$ becomes $A \to BX_1, X_1 \to CX_2, X_2 \to DE$\\
+        \underline{\textbf{Pushdown automaton}}\\
+        \textbf{Sixtuple}: $(K, \Sigma, \Gamma, \Delta, s, A)$, $\Gamma$ is stack alphabet, $\Delta$ is transition relation, finite subset of $(K \times (\Sigma \cup \{\varepsilon\}) \times \Gamma ^*) \times (K \times \Gamma ^*)$, state, input, pop, state, push\\
+        \textbf{Configuration}: element of $K \times \Sigma^* \times \Gamma^*$, initial is $(s, w, \varepsilon)$\\
+        \textbf{Top of stack}: leftmost character\\
+        \textbf{Accepting}: in accepting state, stack \& input empty\\
+        \textbf{Transitions}: input/pop/push\\
+        \boldmath$a^n b^n$\unboldmath: push all $a$, when see $b$ start popping $a$ for every $b$, for $2n$ on $b$ push 2 $a$ for every $a$ in input\\
+        \textbf{Balanced parentheses}: push opening, pop opening for every closing\\
+        \boldmath$wc w^R$\unboldmath: push everything before $c$, after pop matching\\
+        \textbf{Even palindrome}: like above, but nondeterministically decide where the middle is instead of using $c$ ($\varepsilon/\varepsilon/\varepsilon$)\\
+        \boldmath$a^m b^n: m \neq n$\unboldmath: start with equal, if stack \& input empty reject, if leftover detected in either stack or input clear \& accept, still need to be sure of order\\
+        \boldmath$\neg a^n b^n c^n$\unboldmath: out of order, $i \neq j, j \neq k$ (last two is just unequal $a, b, c$)\\
+        \textbf{Deterministic}: iff $\Delta_M$ contains no pairs of transitions that complete with each other \& whenever $M$ is in accepting configuration never forced to choose between accept \& continue (via $\varepsilon$-transition with no popping)\\
+        \textbf{Reduce nondeterminism}: use \# as bottom of stack marker \& \$ as end of string marker\\
+        \textbf{CFG to PDA top down}: 2 states, start at p, q accepting, from p to q push start symbol, loop on q for each rule pop LHS and push RHS, for each terminal pop\\
+        \textbf{CFG to PDA bottom up}: 2 states, start at p, q accepting, from p to q pop start symbol, loop on p for each rule pop reverse RHS and push LHS (reduce), for each terminal push (shift)\\
     \end{multicols}
     \end{document}
