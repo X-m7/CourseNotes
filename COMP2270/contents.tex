@@ -152,5 +152,25 @@
         \boldmath$ww$\unboldmath: intersect with R, so $L' = L \cap a^* b^* a^* b^*$ to restrict form, then use pumping lemma on $L'$, if $L$ is CF then $L'$ must be CF but it is not\\
         \textbf{Deterministic CF Closures}: complement but not union \& intersection\\
         \textbf{Proof that nondeterministic CFL exists}: complement of $a^i b^j c^k: i \neq j \vee j \neq k$ is $a^n b^n c^n \cup$ out of order, but then intersecting with $a^* b^* c^*$ returns $a^n b^n c^n$, so original is CF but not DCF\\
+        \underline{\textbf{Turing machine}}\\
+        \textbf{Sixtuple}: $(K, \Sigma, \Gamma, \delta, s, H)$, $\Sigma$ does not contain $\square$, $\Gamma$ must contain $\square$ \& have $\Sigma$ as subset, $H \subseteq K$ is set of halting states, $\delta$ is transition function $(K - H) \times \Gamma$ to $K \times \Gamma \times \{ \to, \leftarrow \}$\\
+        \textbf{Transition action}: go to next state, write, move head\\
+        \boldmath\textbf{Convert $a^i b^j, 0 \leq j \leq i$ to $a^n b^n$}\unboldmath: mark $a$ with \$, find next $b$, if found mark with \# \& search for next pair, else write \# \& search for unmarked $a$, finally replace \$ to $a$ \& \# to $b$\\
+        \textbf{Configuration}: $K \times ((\Gamma - \{\square\}) \Gamma^*) \times \Gamma \times (\Gamma^* (\Gamma - \{ \square \})) \cup \{\varepsilon\}$, state, active tape up to scanned square, scanned square, all active tape after scanned square\\
+        \textbf{Start head position}: before input\\
+        \textbf{Macros}: $M_x$ writes $x$, $L/R$ moves left/right once, $h$ halts, $y$ accepts, $n$ rejects, $x \leftarrow a,b$ label in transition means if read either then assign to variable $x$ \& continue, if part of $L/R$ then find first one \& store, $L/R_x$ find first $x$ to left/right of current\\
+        \boldmath\textbf{Convert $w \in {\{1\}}^*$ to $w^3$}\unboldmath: mark each 1 with \#, go to end, put 2 \#, repeat until no 1, then convert all \# to 1\\
+        \boldmath\textbf{Convert $u \square w$ to $uw$\unboldmath}: start from middle blank, for each character in 2nd half store in variable, write blank in original spot, write variable to the left\\
+        \boldmath$a^n b^n c^n$\unboldmath: for each $a$ mark, then mark corresponding $b$ \& $c$, if no more $a$ verify no leftover $b$ or $c$, also verify order of characters\\
+        \boldmath$wcw$\unboldmath: look at each character from 1st half \& compare to corresponding 2nd half using variables\\
+        \boldmath$b^* a{(a \cup b)}^*$\unboldmath: at least 1 $a$, $b$ can come anywhere, so just scan for $a$\\
+        \textbf{Computing}: TM computes a function iff for all $w$ in alphabet \& $w$ is an input on which $f$ is defined $M(w) = f(w)$, otherwise it does not halt, output of function is everything after head\\
+        \textbf{Computable/Recursive}: iff TM exists that computes it and always halts\\
+        \textbf{Copy machine}: for each character store in variable, write blank, $R_\square$ 2x (skip middle blank \& get to end of 2nd part), write variable, go back to start of 1st part \& write variable back\\
+        \textbf{Binary +1}: go to end, flip all successive 1s at the end to 0s, then behind all the flipped bits write 1\\
+        \boldmath$f(w) = ww$\unboldmath: copy, then shift 2nd part back\\
+        \textbf{Busy beaver functions}: $S(n)$ is max steps executed by TM (with tape alphabet blank \& 1, halt on blank tape) with n non-halting states when started on blank tape before halting, $\Sigma(n)$ is max number of 1s left on tape by TM with n non-halting state before halt\\
+        \textbf{Nondeterministic quintuple}: $(K, \Sigma, \Gamma, \Delta, s, H)$, $\Delta$ is subset of $((K-H)\times\Gamma) \times (K\times\Gamma\times \{ \to, \leftarrow \})$\\
+        \textbf{2 of at least 1 letter}: nondeterministically select 1 letter, then see if there are two of them\\
     \end{multicols}
     \end{document}
