@@ -142,5 +142,15 @@
         \textbf{Reduce nondeterminism}: use \# as bottom of stack marker \& \$ as end of string marker\\
         \textbf{CFG to PDA top down}: 2 states, start at p, q accepting, from p to q push start symbol, loop on q for each rule pop LHS and push RHS, for each terminal pop\\
         \textbf{CFG to PDA bottom up}: 2 states, start at p, q accepting, from p to q pop start symbol, loop on p for each rule pop reverse RHS and push LHS (reduce), for each terminal push (shift)\\
+        \underline{\textbf{Pumping lemma for CF}}\\
+        \textbf{Show CF}: create CFG, PDA, use closure\\
+        \textbf{Definition}: $\exists k \geq 1 (\forall $strings $w \in L$, where $|w| \geq k (\exists u, v, x, y, z (w = uvxyz, vy \neq \varepsilon, |vxy| \leq k, \forall q \geq 0 (u v^q x y^q z$ is in L $))))$\\
+        \textbf{Closures}: union (CFG with 2 possible paths), concatenation (above), Kleene star (let start repeat or $\varepsilon$), reverse (convert to CNF, flip nonterminal rules), interection with R, difference with R\\
+        \textbf{Intersection}: try $a^n b^n c^m \cap a^m b^n c^n$, get $a^n b^n c^n$, 2 originals CF but result not, but intersection of CF \& R is CF (do it same way as intersection of R, works since only 1 stack needed)\\
+        \textbf{Complement}: $a^n b^n c^n$\\
+        \textbf{Difference}: $\neg L = \Sigma^* - L$, $\Sigma^*$ is CF, if closed under difference would be closed under complement, but just proved latter is false, but works for CF \& R ($L_1 - L_2 = L_1 \cap \neg L_2$)\\
+        \boldmath$ww$\unboldmath: intersect with R, so $L' = L \cap a^* b^* a^* b^*$ to restrict form, then use pumping lemma on $L'$, if $L$ is CF then $L'$ must be CF but it is not\\
+        \textbf{Deterministic CF Closures}: complement but not union \& intersection\\
+        \textbf{Proof that nondeterministic CFL exists}: complement of $a^i b^j c^k: i \neq j \vee j \neq k$ is $a^n b^n c^n \cup$ out of order, but then intersecting with $a^* b^* c^*$ returns $a^n b^n c^n$, so original is CF but not DCF\\
     \end{multicols}
     \end{document}
