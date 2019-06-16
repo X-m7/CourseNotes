@@ -170,7 +170,25 @@
         \textbf{Binary +1}: go to end, flip all successive 1s at the end to 0s, then behind all the flipped bits write 1\\
         \boldmath$f(w) = ww$\unboldmath: copy, then shift 2nd part back\\
         \textbf{Busy beaver functions}: $S(n)$ is max steps executed by TM (with tape alphabet blank \& 1, halt on blank tape) with n non-halting states when started on blank tape before halting, $\Sigma(n)$ is max number of 1s left on tape by TM with n non-halting state before halt\\
+        \textbf{Simulating multi-tape TM on single tape}: $O(n \times (|w| + n)) = O(n^2)$ assuming that $n \geq w$, $n$ is number of passes\\
         \textbf{Nondeterministic quintuple}: $(K, \Sigma, \Gamma, \Delta, s, H)$, $\Delta$ is subset of $((K-H)\times\Gamma) \times (K\times\Gamma\times \{ \to, \leftarrow \})$\\
         \textbf{2 of at least 1 letter}: nondeterministically select 1 letter, then see if there are two of them\\
+        \underline{\textbf{Week 10}}:\\
+        \textbf{Simulating real computer}:\\
+        \textit{Tapes}: memory, program counter, address register, accumulator, current instruction opcode, input, output\\
+        \textit{Formats}: memory is series of (address, value) pairs separated by delimiters, instruction is series of instruction number, 4-bit opcode \& address (no need to separate last 2)\\
+        \textit{Algorithm}: Move input string to input file, initialise PC to 0, loop (scan memory for instruction matching PC, copy opcode to current instruction, copy address to address register, PC+1, scan memory for address in address register (operand), if load copy memory to accumulator, if add add operand to accumulator, if jump copy address register to PC, etc)\\
+        \textit{Performance}: $O(n^3)$, $O(n^6)$ on single tape\\
+        \textbf{Encoding TM}:\\
+        \textit{States}: number them from 0 to $|K| - 1$ in binary, use smallest number of digits that fits, 0 for start, prefix with $y$ for accept, $n$ for reject, $h$ for halt, $q$ else\\
+        \textit{Tape alphabet}: prefix with $a$, same numbering as states, 0 is blank\\
+        \textit{Transitions}: (state, input, state, output, move), special case for start state that accepts: (q0)\\
+        \textit{Final}: list of transitions\\
+        \textbf{Universal TM}: on input <$M,w$>, $U$ must halt iff $M$ halts on $w$, if $M$ is deciding/semideciding then must also accept/reject accordingly, if $M$ computes function then $U($<$M,w$>$)$ must equal $M(w)$\\
+        \textbf{Running UTM}:\\
+        \textit{Tapes}: $M$'s tape, <$M$> (program to run), encoding of $M$'s state (program counter)\\
+        \textit{Initialisation}: copy <$M$> to program tape, write 1st state to state tape\\
+        \textit{Simulation}: scan program for quintuple that matches current (state, input) pair, perform associated action, if no matching quintuple halt, finally report result\\
+        \textbf{Church-Turing Thesis}: all formalisms powerful enough to describe everything we think of as computational algorithm are equivalent\\
     \end{multicols}
     \end{document}
