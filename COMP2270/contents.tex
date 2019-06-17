@@ -184,11 +184,26 @@
         \textit{Tape alphabet}: prefix with $a$, same numbering as states, 0 is blank\\
         \textit{Transitions}: (state, input, state, output, move), special case for start state that accepts: (q0)\\
         \textit{Final}: list of transitions\\
-        \textbf{Universal TM}: on input <$M,w$>, $U$ must halt iff $M$ halts on $w$, if $M$ is deciding/semideciding then must also accept/reject accordingly, if $M$ computes function then $U($<$M,w$>$)$ must equal $M(w)$\\
+        \textbf{Universal TM}: on input $<M,w>$, $U$ must halt iff $M$ halts on $w$, if $M$ is deciding/semideciding then must also accept/reject accordingly, if $M$ computes function then $U(<M,w>)$ must equal $M(w)$\\
         \textbf{Running UTM}:\\
-        \textit{Tapes}: $M$'s tape, <$M$> (program to run), encoding of $M$'s state (program counter)\\
-        \textit{Initialisation}: copy <$M$> to program tape, write 1st state to state tape\\
+        \textit{Tapes}: $M$'s tape, $<M>$ (program to run), encoding of $M$'s state (program counter)\\
+        \textit{Initialisation}: copy $<M>$ to program tape, write 1st state to state tape\\
         \textit{Simulation}: scan program for quintuple that matches current (state, input) pair, perform associated action, if no matching quintuple halt, finally report result\\
         \textbf{Church-Turing Thesis}: all formalisms powerful enough to describe everything we think of as computational algorithm are equivalent\\
+        \underline{\textbf{Week 11}}\\
+        \textbf{TM Universe Definition}: only strings which meet syntactic requirements of the language definition, set of syntactically valid strings is in D\\
+        \textbf{Complement}: with respect to universe of the same syntactic form, ex: complement of $<M,w>$: TM $M$ halts on input $w$ is still in the form $<M,w>$, but simply does not halt\\
+        \textbf{Halting problem is SD}: run the TM, then accept, if no halt will never accept\\
+        \textbf{Halting problem is not D}: contradiction, if decidable there will be TM to do so (if halt accept, else reject), but if $M_H(<Trouble, Trouble>)$ is run ($Trouble(x)$: if $M_H$ accepts $<x,x>$ then loop forever, else halt) then if $M_H$ returns true $Trouble$ loops, but if return false then $Trouble$ does halt\\
+        \textbf{If H is in D all SD would be in D}: there will be semideciding TM, if H in D there will be oracle $O$ to decide it, then we can run $O$ on $<M_L,w>$, if $O$ accepts (will halt), then run, if it accepts then accept, else reject, if will not halt then reject\\
+        \textbf{Set of CFL is proper subset of D}: CFLs decidable, so subset, \& at least 1 language is decidable but not CF ($a^n b^n c^n$)\\
+        \textbf{There are languages not in SD}: countably infinite number of SD (enumerate TM) over nonempty alphabet, but uncountably infinite languages (power set)\\
+        \textbf{SD extra example}: email of someone who will respond to message in group\\
+        \textbf{SD not closed under complement}: if can semidecide both it and complement then can decide it, would be in D, contradiction\\
+        \boldmath\textbf{$\neg H$ is not in SD}\unboldmath: $H$ is in SD but not D, if $\neg H$ in SD then $H$ would be in D, but it's not, so can't be in SD\\
+        \textbf{Languages not in D}: $H$, $\neg H$, does $M$ halt on empty tape, is there any string on which $M$ halts, does $M$ accept all strings, do 2 TMs accept same language, is language accepted by TM regular\\
+        \textbf{Rice's theorem}: no nontrivial property of SD languages is decidable, nontrivial is one that is not simply true for all languages or false for all\\
+        \textbf{Using Rice's theorem}: specify property P, show that domain is SD, show it is nontrivial\\
+        \textbf{Is language regular}: is $\{<M>: L(M)$ is regular$\}$ in D, P is true if $L$ is regular, false otherwise, domain is SD since it is languages accepted by TM, nontrivial because $a^*$ is regular but $a^n b^n$ is not\\
     \end{multicols}
     \end{document}
