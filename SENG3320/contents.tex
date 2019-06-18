@@ -95,5 +95,32 @@
         \textbf{Input sub-domain}: set of inputs satisfying path condition\\
         \textbf{Searching input to execute path}: equivalent to solving associated path condition\\
         \includegraphics[width=\linewidth]{242.pdf}\\
+        \underline{\textbf{Week 6}}\\
+        \textbf{Random testing}: random number generator (monkeys) to generate test cases, also called fuzz testing, monkey testing, slelect tests from entire input domain (set of all possible inputs) randomly \& independently, no guide towards failure-causing inputs\\
+        \textbf{Adaptive Random Testing}: achieve even spread of test cases\\
+        \includegraphics[width=\linewidth]{259.pdf}\\
+        \includegraphics[width=\linewidth]{260.pdf}\\
+        \includegraphics[width=\linewidth]{261.pdf}\\
+        \includegraphics[width=\linewidth]{262.pdf}\\
+        \includegraphics[width=\linewidth]{263.pdf}\\
+        \includegraphics[width=\linewidth]{264.pdf}\\
+        \includegraphics[width=\linewidth]{265.pdf}\\
+        \textbf{Distance in ART}: can use Euclidean distance, if $p = (p_1, p_2, \ldots, P_n)$ \& $q = (q_1, q_2, \ldots, q_n)$ are 2 points in $n$-dimensional space, $d(p,q) = d(q,p) = \sqrt{{(q_1 - p_1)}^2 + {(q_2 - p_2)}^2 + \cdots + {(q_n-p_n)}^2} = \sqrt{\sum\nolimits_{i=1}^{n}{(q_i-p_i)}^2}$\\
+        \includegraphics[width=\linewidth]{269.pdf}\\
+        \textbf{Random white-box testing}: generate random method invocations \& random parameters\\
+        \textbf{Fuzz testing}: random testing technique that involves providing invalid, unexpected or random data as inputs to program, commonly used to discover coding errors \& unknown vulnerabilities in software, OS or networks by inputting massive amounts of random data (fuzz) to system in attempt to make it crash, cost-effective alternative to more systematic testing techniques\\
+        \includegraphics[width=\linewidth]{272.pdf}\\
+        \textbf{Ways to generate inputs}:\\
+        \textit{Mutation based/dumb fuzzing}: little/no knowledge of input sctructure assumed, anomalies added to existing valid inputs, may be completely random of follow heuristics (remove NL, shift char forward), get inputs, optionally mutate them, feed it to program, record if it crached \& input causing it\\
+        \textit{Generation based smart fuzzing}: test cases generated from some description fo format (RFC, docs, etc), anomalies added to each possible spot in inputs, knowledge of protocol should give better results than random fuzzing\\
+        \textbf{Fuzzing rules of thumb}: protocol specific knowledge very helpful (generational tends to beat mutation, better specs make better fuzzers), more fuzzers better (each implementation varies different fuzzers find different bugs), the longer it runs the more bugs found, best results come from guiding process (notice where get stuck, use profiling), code coverage useful for guiding process\\
+        \textbf{Fuzz testing +/-}: intuituvely simple, but need to figure out how to check the output, corner faults might escape detection, debugging with randomly generated input is challenging\\
+        \textbf{Search-based testing}: deem test case generation as search problem, based on random testing \& focus on input domains, use code coverage as guidance (try to generate test case that covers certain code element such as method, statement, branch)\\
+        \textbf{Metaheuristic search}:\\
+        \textit{Hill climbing}: start from random point, try all neighboring points, go to point with highest value until all neighboring points have value lower than current point, easy to find local optimal\\
+        \textit{\textit{Annealing simulation}}: adaptation of hill climbing, has probability to move after reached local peak, probability drops as time goes by\\
+        \textit{Genetic algorithm}: simualte process of evolution, start with random points, select number of best points, combine \& mutate points until no more improvements can be made\\
+        \textbf{Transform testing to search}: list of random test cases as start point, each test case is point in input domain, use various metaheuristic search algorithms to find test cases, measure how well we have solved the problem (use simeple fitness function, how fat is already covered elements from target code elements, try to make it 0)\\
+        \includegraphics[width=\linewidth]{293.pdf}\\
     \end{multicols}
     \end{document}
