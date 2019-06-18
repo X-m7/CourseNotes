@@ -59,5 +59,30 @@
         \textbf{MC/DC coverage}: each entry \& exit point invoked, each decision takes every possible outcome, each condition in a decision takes every possible outcome, each condition in decision is shown to independenly affect outcome of decision, independence of condition is shown by proving that only one condition changes at a time\\
         \includegraphics[width=\linewidth]{148.pdf}\\
         \includegraphics[width=\linewidth]{152.pdf}\\
+        \underline{\textbf{Week 4}}\\
+        \textbf{Dataflow Coverage}: considers how data gets accessed \& modified in system \& how it can get corrupted\\
+        \textbf{Common access-related bugs}: using undefined/uninitializsed variable, deallocating/reinitialising variable before constructed/initialised/used, deleting collection object leaving members unaccessible\\
+        \textbf{Variable definition}: defined whenever value modified (LHS of assignment, input statement, call-by-reference)\\
+        \textbf{Variable use}: used whenever value read (RHS of assignment, call-by-value, branch statement predicate)\\
+        \textbf{p-use}: use in predicate of branch statement\\
+        \textbf{c-use}: any other use\\
+        \textbf{Use \& redefine in single statement}: both sides of assignment, call-by-reference\\
+        \textbf{du-pair}: with respect to variable $v$ is a pair $(d,u)$ such that $d$ is a node defining $v$, $u$ is a node/edge using $v$ (if p-use $u$ is outgoing edge of predicate), there is a def-clear path with respect to $v$ from $d$ to $u$\\
+        \textbf{Definition clear}: with respect to variable $v$ if no variable re-definition of $v$ on path\\
+        \includegraphics[width=\linewidth]{167.pdf}\\
+        \includegraphics[width=\linewidth]{179.pdf}\\
+        \textbf{\textbf{Dataflow test coverage criteria}}:\\
+        \textit{All-Defs}: for every variable $v$, at least one def-clear path from every definition of $v$ to at least one c-use or p-use of $v$ must be covered\\
+        \textit{All-P/C-Uses}: for every variable $v$, at least one def-clear path from every definition of $v$ to every p/c-use of $v$ must be covered\\
+        \textit{All-Uses}: all du-pairs covered\\
+        \textbf{Notations}:\\
+        $d_1(x)$: definition of variable $x$ in node $i$\\
+        $u_i(x)$: use of variable $x$ in node $i$
+        $dcu(d_i(x)) = dcu(x,i)$: set of c-uses with respect to $d_1(x)$\\
+        $dpu(d_i(x)) = dpu(x,i)$: set of p-uses with respect to $d_1(x)$\\
+        \includegraphics[width=\linewidth]{196.pdf}\\
+        \textbf{All-C-Uses for above}: $dcu(x,1) + dcu(y,1) + dcu(y,6) + dcu(z,1) + dcu(z,4) + dcu(z,5) + dcu(count,1) + dcu(count,6) = 2 + 2 + 2 + 3 + 3 + 3 + 1 + 1 = 17$\\
+        \textbf{All-P-Uses for above}: $dpu(x,1) + dpu(y,1) + dpu(y,6) + dpu(z,1) + dpu(z,4) + dpu(z,5) + dpu(count,1) + dpu(count,6) = 2 + 2 + 2 + 0 + 0 + 0 + 2 + 2 = 10$ (note this includes using the initial count definition even though it will always be redefined (-1) before the comparison)\\
+        \includegraphics[width=\linewidth]{203.pdf}\\
     \end{multicols}
     \end{document}
