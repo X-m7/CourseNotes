@@ -190,5 +190,22 @@
         \textbf{Mean time to failure}: mean of probability density, expected value of T, average lifetime of system, $E(T) = \int_0^\infty t \: f(t)dt = \int_0^\infty R(t)dt$, for exponential is $\frac{1}{\lambda}$\\
         \textbf{Mean time between failures}: $MTTF + MTTR$ (mean time to repair)\\
         \textbf{Software reliability tools tasks}: collecting failure \& test time info, calculating estimates of model parameters using this onfo, testing to fit model against collected info, selecting model to make predictions of remaining faults, time to test, apply model\\
+        \underline{\textbf{Week 9}}\\
+        \textbf{Software reviews}: quality improvement processes for written material, by detecting defects early \& preventing leakage downstream higher cost of later detection \& rework eliminated\\
+        \textbf{Software products that can be reviewed}: requirements specifications, design descriptions, source code (code review), release notes\\
+        \textbf{Code review types}: ad-hoc review, pass-round, walkthrough, group review, formal inspection\\
+        \textbf{Formal Inspection}: planning/overview, preparation (product docs, rules/checklist), inspection, rework\\
+        \textbf{Code review steps}: perform examination of software products, detect defects (bugs), violation of coding standards, code smells, other problems, look for code patterns that indicate problems based on prior xp, static analysis tools can also help\\
+        \textbf{Bug patterns}: infinite recursion, null pointer bugs, SQL injection, divide by 0, buffer overflow, memory leak, deadlock, infinite loop, XSS\\
+        \textbf{\textbf{Code smells}}: indications of poor coding \& design choices that can cause problems during later phase of development, hint something gone wrong somewhere
+        \includegraphics[width=\linewidth]{418.pdf}\\
+        \includegraphics[width=\linewidth]{419.pdf}\\
+        \includegraphics[width=\linewidth]{420.pdf}\\
+        \includegraphics[width=\linewidth]{421.pdf}\\
+        \textbf{Code Review benefits}: can find 60--100\% of defects, can assess/improve quality of work product, software development process \& review process itself, reduce total project cost but have non-trivial cost (15\%), early defect removal is 10--100 times cheaper, reviews distribute domain knowledge, dev skills, corporate culture\\
+        \textbf{Common problems in code review}: insufficient preparation, moderator domination, incorrect review rate, ego involvement \& personality conflict, issue resolution \& meeting digression,recording difficulties \& clerical overhead\\
+        \textbf{Static Analysis}: analyse program without executing, doesn't depend on test cases, generally doesn't know what the software is supposed to do, looks for bug patterns, no replacement for testing, many defects can't be found with static analysis\\
+        \textbf{Patterns to be checked}: bad practice, correctness, performance, dodgy code, vulnerability to malicious code\\
+        \textbf{Pattern examples}: equals method should not assume type of object argument, collection should not contain themselves ($!s.contains(s)$), should not use $String.toString()$\\
     \end{multicols}
     \end{document}
