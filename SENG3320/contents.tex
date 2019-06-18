@@ -84,5 +84,16 @@
         \textbf{All-C-Uses for above}: $dcu(x,1) + dcu(y,1) + dcu(y,6) + dcu(z,1) + dcu(z,4) + dcu(z,5) + dcu(count,1) + dcu(count,6) = 2 + 2 + 2 + 3 + 3 + 3 + 1 + 1 = 17$\\
         \textbf{All-P-Uses for above}: $dpu(x,1) + dpu(y,1) + dpu(y,6) + dpu(z,1) + dpu(z,4) + dpu(z,5) + dpu(count,1) + dpu(count,6) = 2 + 2 + 2 + 0 + 0 + 0 + 2 + 2 = 10$ (note this includes using the initial count definition even though it will always be redefined (-1) before the comparison)\\
         \includegraphics[width=\linewidth]{203.pdf}\\
+        \underline{\textbf{Week 5}}\\
+        \textbf{Program mutation}: create artificial bugs by injecting changes to statements of programs, simulate subtle bugs in real programs\\
+        \textbf{Mutation testing}: software testing technique based on program mutation, can be used to evaluate test effectiveness \& enhance test suite, can be stronger than control/data-flow coverage, extremely costly since need to run whole test suite against each mutant\\
+        \textbf{Mutation testing steps}: applies artificial changes based on mutation operators to generate mutants (each mutant with ony one artificial bug), run test suite against each mutant (if any test fails mutant killed, else survives), compute mutation score\\
+        \textbf{Symbolic execution/evaluation}: analyse program to determine what inputs cause each part of program to execute, execute programs with symbols (track symbolic state rather than concrete input, when execute one path actually simulate many test inputs (since considering all inputs that can exercise same path))
+        \textbf{Problems with symbolic execution}:\\
+        \textit{Path explosion}: $2^n$ paths for $n$ branches, infinite paths for unbounded loops, calculate constraints for all paths is infeasible for real software\\
+        \textit{Constraint too complex}: especially for large programs, also it is NP-complete\\
+        \textbf{Input sub-domain}: set of inputs satisfying path condition\\
+        \textbf{Searching input to execute path}: equivalent to solving associated path condition\\
+        \includegraphics[width=\linewidth]{242.pdf}\\
     \end{multicols}
     \end{document}
