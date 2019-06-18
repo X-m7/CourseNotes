@@ -153,5 +153,42 @@
         \textbf{Usability Testing Steps}: identify website purpose, identify intended users, define tests \& conduct usability testing, analyze acquired info\\
         \includegraphics[width=\linewidth]{340.pdf}\\
         \textbf{Compatibility Testing}: ensures product functionality \& reliability on supported browsers \& platforms that exist on customer computer\\
+        \underline{\textbf{Week 8}}\\
+        \textbf{Test management}: manage test plans \& cases, track requirements \& defects, execute tests, measure progress\\
+        \textbf{Test Report Contents}:\\
+        \textit{Test objective}: identifying objectives of testing, should be planned so all requirements individually tested, state exit criteria\\
+        \textit{Test environment}: description of test tools, required packages, hardware \& software environment\\
+        \textit{Modules (features) under test \& test cases}: software modules to be tested \& corresponding test cases, expected \& actual test results\\
+        \textit{Testing schedule}: overall test schedule \& resource allocation\\
+        \textit{Test Summary}: summary \& analysis of test results, test coverage report\\
+        \includegraphics[width=\linewidth]{355.pdf}\\
+        \textbf{Issue Tracking System}: software tool designed to help devs keep track of reported software issues (including bugs \& new feature requests), extremely valuable in software development, used extensively by companies developing software products\\
+        \textbf{Issue Tracking System Uses}: track issues/bugs, communicate with teammates, submit \& review patches, manage quality assurance\\
+        \textbf{Bug Data}:\\
+        \textit{Description}: summary, product/module it belongs to, detailed descriptions\\
+        \textit{Role}: reporter/submitter, assignee, QA contact\\
+        \textit{Status}: current status, resolution, priority, severity\\
+        \textit{Time}: open date, changed date, closed date, \ldots\\
+        \includegraphics[width=\linewidth]{359.png}\\
+        \textbf{Issue Tracking System Design}: database, business logic, client\\
+        \textbf{Useful bug reports}: ones that get bugs fixed, reproducible, specific\\
+        \textbf{Regression Testing}: run old test cases on new version, establishing policy for regular regression testing is key for achieving successful,reliable \& predictable software development projects\\
+        \textbf{Regression Test Selection}: speed up regression testing by only rerunning tests affected by code changes\\
+        \textbf{Regression Test Prioritisation}: rank all test cases (to discover bugs sooner or achieve higher coverage sooner), run test cases according to ranked sequence, stop when all resources used up\\
+        \textbf{Reliability}: probability that system/capability of system functions without failure for specified time in specified environment, ex: reliability of 0.92 for 8 hours means when executed for that long would operate without failure for 92 out of 100 periods\\
+        \textbf{Single failure specification}: what is probability of failure of a system/component\\
+        \textbf{Multiple failure specification}: if system/component fails at time $t_1,t_2, \ldots, t_{i-1}$m what is probability of failure at time $t_i$\\
+        \textbf{Reliability formulas}: $R(t) = P(T > t), F(t) = P(T \leq t), t \geq 0$\\
+        \includegraphics[width=\linewidth]{385.pdf}\\
+        \includegraphics[width=\linewidth]{386.pdf}\\
+        \includegraphics[width=\linewidth]{387.pdf}\\
+        \includegraphics[width=\linewidth]{388.pdf}\\
+        \textbf{Reliability Distributions}: exponential, Poisson, lognormal, normal, Pareto, Weibull\\
+        \includegraphics[width=\linewidth]{390.pdf}\\
+        \includegraphics[width=\linewidth]{391.pdf}\\
+        \includegraphics[width=\linewidth]{392.pdf}\\
+        \textbf{Mean time to failure}: mean of probability density, expected value of T, average lifetime of system, $E(T) = \int_0^\infty t \: f(t)dt = \int_0^\infty R(t)dt$, for exponential is $\frac{1}{\lambda}$\\
+        \textbf{Mean time between failures}: $MTTF + MTTR$ (mean time to repair)\\
+        \textbf{Software reliability tools tasks}: collecting failure \& test time info, calculating estimates of model parameters using this onfo, testing to fit model against collected info, selecting model to make predictions of remaining faults, time to test, apply model\\
     \end{multicols}
     \end{document}
