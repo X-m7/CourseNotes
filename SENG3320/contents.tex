@@ -5,7 +5,6 @@
 
     \begin{document}
     \begin{multicols}{3}
-        \scriptsize
         \noindent\underline{\textbf{Week 1}}\\
         \textbf{Software testing}: process of executing program/system with intent of finding errors\\
         \textbf{Fault}: incorrect portions of code (can be missing as well as incorrect)\\
@@ -27,7 +26,7 @@
         \includegraphics[width=\linewidth]{44.pdf}\\
         \includegraphics[width=\linewidth]{45.pdf}\\
         \textbf{Coverage types}: statement, branch, path (infinite if loop exists), strictly subsumes all beforehand\\
-        \underline{\textbf{Week 2}}\\
+        \vfill\null\columnbreak\noindent\underline{\textbf{Week 2}}\\
         \textbf{Test oracle}: expected output of software for given input, part of test case\\
         \textbf{Test driver}: software framework that can load collection of test cases or test suite\\
         \textbf{Test suite}: collection of test cases\\
@@ -59,7 +58,7 @@
         \textbf{MC/DC coverage}: each entry \& exit point invoked, each decision takes every possible outcome, each condition in a decision takes every possible outcome, each condition in decision is shown to independenly affect outcome of decision, independence of condition is shown by proving that only one condition changes at a time\\
         \includegraphics[width=\linewidth]{148.pdf}\\
         \includegraphics[width=\linewidth]{152.pdf}\\
-        \underline{\textbf{Week 4}}\\
+        \vfill\null\columnbreak\noindent\underline{\textbf{Week 4}}\\
         \textbf{Dataflow Coverage}: considers how data gets accessed \& modified in system \& how it can get corrupted\\
         \textbf{Common access-related bugs}: using undefined/uninitializsed variable, deallocating/reinitialising variable before constructed/initialised/used, deleting collection object leaving members unaccessible\\
         \textbf{Variable definition}: defined whenever value modified (LHS of assignment, input statement, call-by-reference)\\
@@ -84,18 +83,18 @@
         \textbf{All-C-Uses for above}: $dcu(x,1) + dcu(y,1) + dcu(y,6) + dcu(z,1) + dcu(z,4) + dcu(z,5) + dcu(count,1) + dcu(count,6) = 2 + 2 + 2 + 3 + 3 + 3 + 1 + 1 = 17$\\
         \textbf{All-P-Uses for above}: $dpu(x,1) + dpu(y,1) + dpu(y,6) + dpu(z,1) + dpu(z,4) + dpu(z,5) + dpu(count,1) + dpu(count,6) = 2 + 2 + 2 + 0 + 0 + 0 + 2 + 2 = 10$ (note this includes using the initial count definition even though it will always be redefined (-1) before the comparison)\\
         \includegraphics[width=\linewidth]{203.pdf}\\
-        \underline{\textbf{Week 5}}\\
+        \vfill\null\columnbreak\noindent\underline{\textbf{Week 5}}\\
         \textbf{Program mutation}: create artificial bugs by injecting changes to statements of programs, simulate subtle bugs in real programs\\
         \textbf{Mutation testing}: software testing technique based on program mutation, can be used to evaluate test effectiveness \& enhance test suite, can be stronger than control/data-flow coverage, extremely costly since need to run whole test suite against each mutant\\
         \textbf{Mutation testing steps}: applies artificial changes based on mutation operators to generate mutants (each mutant with ony one artificial bug), run test suite against each mutant (if any test fails mutant killed, else survives), compute mutation score\\
-        \textbf{Symbolic execution/evaluation}: analyse program to determine what inputs cause each part of program to execute, execute programs with symbols (track symbolic state rather than concrete input, when execute one path actually simulate many test inputs (since considering all inputs that can exercise same path))
+        \textbf{Symbolic execution/evaluation}: analyse program to determine what inputs cause each part of program to execute, execute programs with symbols (track symbolic state rather than concrete input, when execute one path actually simulate many test inputs (since considering all inputs that can exercise same path))\\
         \textbf{Problems with symbolic execution}:\\
         \textit{Path explosion}: $2^n$ paths for $n$ branches, infinite paths for unbounded loops, calculate constraints for all paths is infeasible for real software\\
         \textit{Constraint too complex}: especially for large programs, also it is NP-complete\\
         \textbf{Input sub-domain}: set of inputs satisfying path condition\\
         \textbf{Searching input to execute path}: equivalent to solving associated path condition\\
         \includegraphics[width=\linewidth]{242.pdf}\\
-        \underline{\textbf{Week 6}}\\
+        \vfill\null\columnbreak\noindent\underline{\textbf{Week 6}}\\
         \textbf{Random testing}: random number generator (monkeys) to generate test cases, also called fuzz testing, monkey testing, slelect tests from entire input domain (set of all possible inputs) randomly \& independently, no guide towards failure-causing inputs\\
         \textbf{Adaptive Random Testing}: achieve even spread of test cases\\
         \includegraphics[width=\linewidth]{259.pdf}\\
@@ -122,7 +121,7 @@
         \textit{Genetic algorithm}: simualte process of evolution, start with random points, select number of best points, combine \& mutate points until no more improvements can be made\\
         \textbf{Transform testing to search}: list of random test cases as start point, each test case is point in input domain, use various metaheuristic search algorithms to find test cases, measure how well we have solved the problem (use simeple fitness function, how fat is already covered elements from target code elements, try to make it 0)\\
         \includegraphics[width=\linewidth]{293.pdf}\\
-        \underline{\textbf{Week 7}}\\
+        \vfill\null\columnbreak\noindent\underline{\textbf{Week 7}}\\
         \textbf{Combinatorial Testing}: instead of all possible combinations generate subset to satisfy some well-defined combination strategies, not every variable contributes to every fault, often fault caused by interactions among few variables, can dramatically reduce number of combinations to be covered but remains very effective in terms of fault detection\\
         \textbf{t-way Interaction}: fault triggered by certain conbination of $t$ input values, simple fault is $t=1$, pairwise is $t=2$\\
         \textbf{Best size for t}: 70\% failures detected by $t=2$, max for fault triggering was $t=6$ for certain interactions (medical devices \& NASA distributed database $t=4$, medical 98\% $t=2$, web server \& browser actually 6)\\
@@ -146,14 +145,14 @@
         \textit{Usability}: concerned mainly with the use of the software, assess user friendliness \& suitability by gathering info about how users interact with site, study what user actually does\\
         \textbf{Stress testing tool report}: number of requests, transactions, KBps, round trip time (from user making request to receiving result), number of concurrent connection, performance degradation, types of visitors to site \& number, CPU \& memory use of app server\\
         \textbf{Top 2 Web App Security Risks}:\\
-        \textit{Injection}: SQL, OS,LDAP, occur whe untrusted data sent to interpreter as part of command/query\\
+        \textit{Injection}: SQL, OS, LDAP, occur whe untrusted data sent to interpreter as part of command/query\\
         \textit{Cross Site Scripting}: occur whenever app takes untrusted data \& send to web browser without proper validation \& escaping\\
         \textbf{Injection Protectiom}: validate input (careful with special characters, whitelist, validate length, type, syntax), avoid use of interpreter (use stored procedures), otherwise use safe APIs (strongly typed parameterised queries, such as PreparedStatement), use Object Relational Manager\\
         \textbf{XSS Protection}: appropriate encoding of all output data (HTML/XML depending on output mechanism, encode all characters other than very limited subset, specify character encoding)\\
         \textbf{Usability Testing Steps}: identify website purpose, identify intended users, define tests \& conduct usability testing, analyze acquired info\\
         \includegraphics[width=\linewidth]{340.pdf}\\
         \textbf{Compatibility Testing}: ensures product functionality \& reliability on supported browsers \& platforms that exist on customer computer\\
-        \underline{\textbf{Week 8}}\\
+        \vfill\null\columnbreak\noindent\underline{\textbf{Week 8}}\\
         \textbf{Test management}: manage test plans \& cases, track requirements \& defects, execute tests, measure progress\\
         \textbf{Test Report Contents}:\\
         \textit{Test objective}: identifying objectives of testing, should be planned so all requirements individually tested, state exit criteria\\
@@ -190,7 +189,7 @@
         \textbf{Mean time to failure}: mean of probability density, expected value of T, average lifetime of system, $E(T) = \int_0^\infty t \: f(t)dt = \int_0^\infty R(t)dt$, for exponential is $\frac{1}{\lambda}$\\
         \textbf{Mean time between failures}: $MTTF + MTTR$ (mean time to repair)\\
         \textbf{Software reliability tools tasks}: collecting failure \& test time info, calculating estimates of model parameters using this onfo, testing to fit model against collected info, selecting model to make predictions of remaining faults, time to test, apply model\\
-        \underline{\textbf{Week 9}}\\
+        \vfill\null\columnbreak\noindent\underline{\textbf{Week 9}}\\
         \textbf{Software reviews}: quality improvement processes for written material, by detecting defects early \& preventing leakage downstream higher cost of later detection \& rework eliminated\\
         \textbf{Software products that can be reviewed}: requirements specifications, design descriptions, source code (code review), release notes\\
         \textbf{Code review types}: ad-hoc review, pass-round, walkthrough, group review, formal inspection\\
@@ -207,5 +206,28 @@
         \textbf{Static Analysis}: analyse program without executing, doesn't depend on test cases, generally doesn't know what the software is supposed to do, looks for bug patterns, no replacement for testing, many defects can't be found with static analysis\\
         \textbf{Patterns to be checked}: bad practice, correctness, performance, dodgy code, vulnerability to malicious code\\
         \textbf{Pattern examples}: equals method should not assume type of object argument, collection should not contain themselves ($!s.contains(s)$), should not use $String.toString()$\\
+        \vfill\null\columnbreak\noindent\underline{\textbf{Week 10}}\\
+        \includegraphics[width=\linewidth]{435.pdf}\\
+        \includegraphics[width=\linewidth]{436.pdf}\\
+        \includegraphics[width=\linewidth]{437.pdf}\\
+        \includegraphics[width=\linewidth]{439.pdf}\\
+        \includegraphics[width=\linewidth]{440.pdf}\\
+        \includegraphics[width=\linewidth]{441.pdf}\\
+        \includegraphics[width=\linewidth]{442.pdf}\\
+        \includegraphics[width=\linewidth]{443.pdf}\\
+        \includegraphics[width=\linewidth]{444.pdf}\\
+        \includegraphics[width=\linewidth]{448.pdf}\\
+        \includegraphics[width=\linewidth]{449.pdf}\\
+        \includegraphics[width=\linewidth]{451.pdf}\\
+        \includegraphics[width=\linewidth]{452.pdf}\\
+        \includegraphics[width=\linewidth]{453.pdf}\\
+        \includegraphics[width=\linewidth]{454.png}\\
+        \includegraphics[width=\linewidth]{455.pdf}\\
+        \includegraphics[width=\linewidth]{456.pdf}\\
+        \includegraphics[width=\linewidth]{457.pdf}\\
+        \includegraphics[width=\linewidth]{458.pdf}\\
+        \includegraphics[width=\linewidth]{459.pdf}\\
+        \includegraphics[width=\linewidth]{460.pdf}\\
+        \includegraphics[width=\linewidth]{461.pdf}\\
     \end{multicols}
     \end{document}
