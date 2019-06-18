@@ -122,5 +122,36 @@
         \textit{Genetic algorithm}: simualte process of evolution, start with random points, select number of best points, combine \& mutate points until no more improvements can be made\\
         \textbf{Transform testing to search}: list of random test cases as start point, each test case is point in input domain, use various metaheuristic search algorithms to find test cases, measure how well we have solved the problem (use simeple fitness function, how fat is already covered elements from target code elements, try to make it 0)\\
         \includegraphics[width=\linewidth]{293.pdf}\\
+        \underline{\textbf{Week 7}}\\
+        \textbf{Combinatorial Testing}: instead of all possible combinations generate subset to satisfy some well-defined combination strategies, not every variable contributes to every fault, often fault caused by interactions among few variables, can dramatically reduce number of combinations to be covered but remains very effective in terms of fault detection\\
+        \textbf{t-way Interaction}: fault triggered by certain conbination of $t$ input values, simple fault is $t=1$, pairwise is $t=2$\\
+        \textbf{Best size for t}: 70\% failures detected by $t=2$, max for fault triggering was $t=6$ for certain interactions (medical devices \& NASA distributed database $t=4$, medical 98\% $t=2$, web server \& browser actually 6)\\
+        \includegraphics[width=\linewidth]{304.pdf}\\
+        \includegraphics[width=\linewidth]{305.pdf}\\
+        \includegraphics[width=\linewidth]{306.pdf}\\
+        \includegraphics[width=\linewidth]{308.pdf}\\
+        \textbf{Problem formulation for combinatorial testing}: for fixed $t$, $v$ \& $k$ costruct smallest $t$-way covering array\\
+        \textbf{t-way covering array}: for every $t$ parameters all value combinations must appear at least once in covering array, $k$ is number of variables, $v$ is number of possible variables each variable can take, generating minimum is NP-complete\\
+        \textbf{Mathematical approach}: can yield smallest possible covering arrays (orthogonal array)\\
+        \textbf{Computational approach}: can be applied to any types of covering arrays, but consume more time (random, greedy, search based approaches)\\
+        \textbf{In-Parameter-Order}: test generation strategy for combinatorial testing, first generate pairwise set for first 2 parameters, then for first three, so on, pairwise set for first $n$ parameters built by extending test set for first $n-1$ parameters\\
+        \textbf{Horizontal growth}: extend each existing test case by adding one value of new parameter\\
+        \textbf{Vertical growth}: adds new tests if necessary\\
+        \includegraphics[width=\linewidth]{319.pdf}\\
+        \includegraphics[width=\linewidth]{320.pdf}\\
+        \textbf{Non-functional testing}:\\
+        \textit{Performance}: how system performs in terms of responsiveness \& stability under particular workload, evaluates system performance under normal \& heavy usage, considers scalability \& load (test ability to handle real-world volumes typically by generating many user access simulations)\\
+        \textit{Stress}: test reliability under unexpected or rare workloads, consists of subjecting the system to varying \& max loads to evaluate resulting performance, can be automated\\
+        \textit{Security}: concerned mainly with security-related aspects of software, primary concern when communicating \& conducting business especially sensitive \& business critical transactions over Internet, regardless whether app requires user to enter password for access still must check for internet threats\\
+        \textit{Usability}: concerned mainly with the use of the software, assess user friendliness \& suitability by gathering info about how users interact with site, study what user actually does\\
+        \textbf{Stress testing tool report}: number of requests, transactions, KBps, round trip time (from user making request to receiving result), number of concurrent connection, performance degradation, types of visitors to site \& number, CPU \& memory use of app server\\
+        \textbf{Top 2 Web App Security Risks}:\\
+        \textit{Injection}: SQL, OS,LDAP, occur whe untrusted data sent to interpreter as part of command/query\\
+        \textit{Cross Site Scripting}: occur whenever app takes untrusted data \& send to web browser without proper validation \& escaping\\
+        \textbf{Injection Protectiom}: validate input (careful with special characters, whitelist, validate length, type, syntax), avoid use of interpreter (use stored procedures), otherwise use safe APIs (strongly typed parameterised queries, such as PreparedStatement), use Object Relational Manager\\
+        \textbf{XSS Protection}: appropriate encoding of all output data (HTML/XML depending on output mechanism, encode all characters other than very limited subset, specify character encoding)\\
+        \textbf{Usability Testing Steps}: identify website purpose, identify intended users, define tests \& conduct usability testing, analyze acquired info\\
+        \includegraphics[width=\linewidth]{340.pdf}\\
+        \textbf{Compatibility Testing}: ensures product functionality \& reliability on supported browsers \& platforms that exist on customer computer\\
     \end{multicols}
     \end{document}
